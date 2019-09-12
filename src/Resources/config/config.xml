@@ -10,6 +10,16 @@
             <label>Active</label>
             <label lang="de-DE">Aktiviert</label>
         </input-field>
+        <input-field type="bool">
+            <name>logging</name>
+            <label>Log API communication</label>
+            <label lang="de-DE">Protokolliere API Kommunikation</label>
+        </input-field>
+        <input-field type="bool">
+            <name>sandbox</name>
+            <label>Use Sandbox Endpoint</label>
+            <label lang="de-DE">Sandbox Endpunkt nutzen</label>
+        </input-field>
         <input-field>
             <name>apiUser</name>
             <label>API User</label>
