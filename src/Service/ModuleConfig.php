@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace src\Service;
+namespace PostDirekt\Autocomplete\Service;
 
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 
