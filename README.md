@@ -17,7 +17,7 @@ Run the following commands from your shop's root directory:
 
 ```shell script
 composer require netresearch/postdirekt-autocomplete
-bin/command plugin:install --activate --clearCache NRPostDirektAutocomplete
+bin/console plugin:install -r --activate --clearCache NRPostDirektAutocomplete
 ```
 
 ### With zip or git clone
@@ -33,7 +33,8 @@ Then, install the composer dependencies and activate the plugin:
 
 ```shell script
 composer require netresearch/postdirekt-autocomplete
-bin/command plugin:install --activate --clearCache NRPostDirektAutocomplete
+composer dump
+bin/console plugin:install -r --activate --clearCache NRPostDirektAutocomplete
 ```
 
 ## Configuration
