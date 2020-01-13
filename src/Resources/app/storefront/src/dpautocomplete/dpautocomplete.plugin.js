@@ -8,16 +8,59 @@ export default class DPAutocompletePlugin extends Plugin {
     static options = {
         token: null,
         fields: [],
+        countries: [],
     };
 
     init()
     {
+
         this.options.fields.forEach(function (field) {
-            console.log(field);
             const input = document.querySelector(field.selector);
-            input.addEventListener('change', function () {
-                console.log(this.options.fields);
-            }.bind(this));
+            this.registerEvents(input);
         }.bind(this));
+    }
+
+    /**
+     * @param {HTMLElement}element
+     */
+    registerEvents(element)
+    {
+        element.addEventListener('change', function () {
+            this.handle();
+        }.bind(this));
+    }
+
+    handle()
+    {
+        this.getSearchString(this.getFieldValues(this.options.fields));
+    }
+
+    /**
+     *
+     * @param fields
+     * @return {[]}
+     */
+    getFieldValues(fields)
+    {
+        const addressData = [];
+        fields.forEach(function (field) {
+            const value = document.querySelector(field.selector).value;
+            if (field.type !== 'country') {
+                addressData.push(value);
+            }
+        });
+
+        return addressData;
+    }
+
+    /**
+     *
+     * @param {string[]} addressData
+     * @return {string}
+     */
+    getSearchString(addressData)
+    {
+        console.log(addressData.join(' '));
+        return addressData.join(' ');
     }
 }

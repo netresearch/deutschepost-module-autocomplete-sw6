@@ -2,7 +2,6 @@
 
 {% block component_address_form_address_fields %}
     {{ parent() }}
-
     {% if page.extensions('postdirekt_autocomplete') %}
     <template
         data-autocomplete-plugin
@@ -25,6 +24,15 @@
                     "type": "country",
                     "selector": "#{{ prefix }}AddressCountry"
                 }
+            ],
+            "countries": [
+                {% for country in page.countries.elements %}
+                    {% if loop.last %}
+                    {"{{ country.id }}" : "{{ country.iso }}"}
+                    {% else %}
+                    {"{{ country.id }}" : "{{ country.iso }}"},
+                    {% endif %}
+                {% endfor %}
             ]
          }'>
     </template>
