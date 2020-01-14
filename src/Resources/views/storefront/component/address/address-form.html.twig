@@ -1,0 +1,32 @@
+{% sw_extends '@Storefront/storefront/component/address/address-form.html.twig' %}
+
+{% block component_address_form_address_fields %}
+    {{ parent() }}
+
+    {% if page.extensions('postdirekt_autocomplete') %}
+    <template
+        data-autocomplete-plugin
+        data-autocomplete-plugin-options='{
+            "token": "{{ page.extensions.postdirekt_autocomplete.get('token') }}",
+            "fields": [
+                {
+                    "type": "street",
+                    "selector": "#{{ prefix }}AddressStreet"
+                },
+                {
+                    "type": "postcode",
+                    "selector": "#{{ prefix }}AddressZipcode"
+                },
+                {
+                    "type": "city",
+                    "selector": "#{{ prefix }}AddressCity"
+                },
+                {
+                    "type": "country",
+                    "selector": "#{{ prefix }}AddressCountry"
+                }
+            ]
+         }'>
+    </template>
+    {% endif %}
+{% endblock %}
