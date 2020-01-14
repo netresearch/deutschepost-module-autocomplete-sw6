@@ -25,15 +25,12 @@
                     "selector": "#{{ prefix }}AddressCountry"
                 }
             ],
-            "countries": [
+            "deCountryId":
                 {% for country in page.countries.elements %}
-                    {% if loop.last %}
-                    {"{{ country.id }}" : "{{ country.iso }}"}
-                    {% else %}
-                    {"{{ country.id }}" : "{{ country.iso }}"},
+                    {% if country.iso is same as('DE') %}
+                        "{{ country.id }}"
                     {% endif %}
                 {% endfor %}
-            ]
          }'>
     </template>
     {% endif %}
