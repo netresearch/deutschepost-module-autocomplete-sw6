@@ -9,11 +9,12 @@ export default class DPAutocompletePlugin extends Plugin {
         token: null,
         fields: [],
         countries: [],
+        deCountryId: null,
+        isDeCountrySelect: false,
     };
 
     init()
     {
-
         this.options.fields.forEach(function (field) {
             const input = document.querySelector(field.selector);
             this.registerEvents(input);
@@ -45,16 +46,17 @@ export default class DPAutocompletePlugin extends Plugin {
         const addressData = [];
         fields.forEach(function (field) {
             const value = document.querySelector(field.selector).value;
-            if (field.type !== 'country') {
+            if (field.type === 'country') {
+                this.setDeCountrySelect(value);
+            } else {
                 addressData.push(value);
             }
-        });
+        }.bind(this));
 
         return addressData;
     }
 
     /**
-     *
      * @param {string[]} addressData
      * @return {string}
      */
@@ -62,5 +64,16 @@ export default class DPAutocompletePlugin extends Plugin {
     {
         console.log(addressData.join(' '));
         return addressData.join(' ');
+    }
+
+    /**
+     * @param {string} countryId
+     */
+    setDeCountrySelect(countryId)
+    {
+        if (this.options.deCountryId === undefined) {
+            this.options.isDeCountrySelect = false;
+        }
+        this.options.isDeCountrySelect = (countryId === this.options.deCountryId);
     }
 }
