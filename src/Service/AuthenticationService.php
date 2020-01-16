@@ -71,6 +71,6 @@ class AuthenticationService
             throw new \RuntimeException('Unable to fetch token');
         }
 
-        return $token;
+        return $token->getAccessToken();
     }
 }
