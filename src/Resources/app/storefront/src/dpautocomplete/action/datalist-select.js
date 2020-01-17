@@ -49,8 +49,9 @@ export default class DatalistSelect {
      * Updates all observed fields.
      *
      * @param {string} optionId
+     * @param {AutocompleteAddressData} addressData
      */
-    updateFields(optionId)
+    updateFields(optionId, addressData)
     {
         const self = this,
             suggestions = this.addressSuggestions;
@@ -58,7 +59,6 @@ export default class DatalistSelect {
         if (optionId) {
             this.currentSuggestionObject = suggestions.getByUuid(optionId);
         }
-        console.log(this.currentSuggestionObject);
         if (self.currentSuggestionObject.uuid) {
             // Fill all fields with response values
             self.fields.forEach(function (selector, fieldName) {
@@ -67,6 +67,7 @@ export default class DatalistSelect {
 
                 if (field && self.currentSuggestionObject[fieldName]) {
                     field.value = self.currentSuggestionObject[fieldName];
+                    addressData.setDataFromField(field);
                 }
             });
         }
