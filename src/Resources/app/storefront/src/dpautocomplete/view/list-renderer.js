@@ -173,7 +173,6 @@ export default class ListRenderer {
 
         if (isDown && !activeItem) {
             firstItem.setAttribute('data-active', 'true');
-            firstItem.setAttribute('style', 'background: gray');
         } else if (activeItem) {
             let prevVisible = null;
             let nextVisible = null;
@@ -187,27 +186,22 @@ export default class ListRenderer {
                 }
             }
             activeItem.removeAttribute('data-active');
-            activeItem.removeAttribute('style');
 
             if (isUp) {
                 if (prevVisible) {
                     prevVisible.setAttribute('data-active', 'true');
-                    prevVisible.setAttribute('style', 'background: gray');
                     if ( prevVisible.offsetTop < dataList.scrollTop ) {
                         dataList.scrollTop -= prevVisible.offsetHeight;
                     }
                 } else {
                     dataOptions[dataOptions.length - 1].setAttribute('data-active', 'true');
-                    dataOptions[dataOptions.length - 1].setAttribute('style', 'background: gray');
                 }
             }
             if (isDown) {
                 if (nextVisible) {
                     nextVisible.setAttribute('data-active', 'true');
-                    nextVisible.setAttribute('style', 'background: gray');
                 } else {
                     dataOptions[0].setAttribute('data-active', 'true');
-                    dataOptions[0].setAttribute('style', 'background: gray');
                 }
             }
 
