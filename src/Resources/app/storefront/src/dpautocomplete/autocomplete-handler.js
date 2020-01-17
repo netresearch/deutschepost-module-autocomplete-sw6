@@ -69,6 +69,12 @@ export default class AddressAutocomplete {
      * @property {SearchService}
      */
     searchService;
+
+    /**
+     *
+     * @property {SelectService}
+     */
+    selectService;
     /**
      *
      * @param {{type: string, selector: string}[]} watchedFields
@@ -107,6 +113,7 @@ export default class AddressAutocomplete {
             this.addressData.setDataFromField(field);
         }.bind(this));
         this.searchService = postdirektAutocomplete.createSearchService(this.token);
+        this.selectService = postdirektAutocomplete.createSelectService(this.token);
     }
 
     /**
@@ -154,8 +161,8 @@ export default class AddressAutocomplete {
         console.log(uuid);
 
         // Update all observed fields after item was selected in datalist
-        this.datalistSelectAction.updateFields(uuid);
-        //this.selectAction();
+        this.datalistSelectAction.updateFields(uuid, this.addressData);
+        this.selectAction();
     }
 
     /**
@@ -215,14 +222,24 @@ export default class AddressAutocomplete {
      *
      * @private
      */
-    /*selectAction()
+    selectAction()
     {
         const selectedSuggestion = this.datalistSelectAction.getCurrentSuggestion();
         if (!selectedSuggestion || !selectedSuggestion.uuid) {
             throw 'Missing required field <uuid>';
         }
-        //this.selectRequest.doSelectRequest(selectedSuggestion);
-    }*/
+        this.selectService.select(
+            this.selectService.requestBuilder.create(
+                {
+                    country: 'de',
+                    subject: postdirektAutocomplete.SearchSubjects.PostalCodesCitiesStreets,
+                    uuid: selectedSuggestion.uuid,
+                }
+            )
+        ).catch(
+            console.log
+        );
+    }
 
     /**
      * Remove all datalists when country is not Germany.
