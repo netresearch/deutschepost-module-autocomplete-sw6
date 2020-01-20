@@ -17,7 +17,14 @@ Run the following commands from your shop's root directory:
 
 ```shell script
 composer require netresearch/postdirekt-autocomplete
-bin/console plugin:install -r --activate --clearCache NRPostDirektAutocomplete
+(cd vendor/netresearch/postdirekt-autocomplete/src/Resources/app/storefront && npm install)
+composer dump
+bin/console plugin:refresh
+bin/console plugin:install --activate --clearCache NRPostDirektAutocomplete
+bin/console bundle:dump
+PROJECT_ROOT=/app/  npm --prefix vendor/shopware/platform/src/Storefront/Resources/app/storefront/ run production
+bin/console assets:install
+bin/console theme:compile
 ```
 
 ### With zip or git clone
@@ -33,8 +40,14 @@ Then, install the composer dependencies and activate the plugin:
 
 ```shell script
 composer require netresearch/postdirekt-autocomplete
+(cd vendor/netresearch/postdirekt-autocomplete/src/Resources/app/storefront && npm install)
 composer dump
-bin/console plugin:install -r --activate --clearCache NRPostDirektAutocomplete
+bin/console plugin:refresh
+bin/console plugin:install --activate --clearCache NRPostDirektAutocomplete
+bin/console bundle:dump
+PROJECT_ROOT=/app/  npm --prefix vendor/shopware/platform/src/Storefront/Resources/app/storefront/ run production
+bin/console assets:install
+bin/console theme:compile
 ```
 
 ## Configuration
