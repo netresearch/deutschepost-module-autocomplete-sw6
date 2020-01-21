@@ -5,14 +5,9 @@
 export default class AutocompleteAddressData {
 
     /**
-     * @param {Object} addressData
-     *
-     * @constructor
+     * @type {{Object}}
      */
-    constructor(addressData)
-    {
-        this.addressData = addressData;
-    }
+    addressData = {};
 
     /**
      * setAddressData.
@@ -22,6 +17,15 @@ export default class AutocompleteAddressData {
     setData(addressData)
     {
         this.addressData = addressData;
+    }
+
+    /**
+     *
+     * @param {HTMLInputElement} field
+     */
+    setDataFromField(field)
+    {
+        this.setDataValue(field.getAttribute('data-address-item'), field.value)
     }
 
     /**
@@ -52,7 +56,7 @@ export default class AutocompleteAddressData {
      */
     isEmpty()
     {
-        for (var key in this.addressData) {
+        for (const key in this.addressData) {
             if (this.addressData[key].length) {
                 return false;
             }
