@@ -14,9 +14,9 @@ export default class DatalistSelect {
     addressSuggestions = {};
 
     /**
-     * @property {Object[]}
+     * @property {Object}
      */
-    currentSuggestionObject = false;
+    currentSuggestionObject = {};
 
     /**
      * Initialize.
@@ -38,8 +38,8 @@ export default class DatalistSelect {
      */
     getCurrentSuggestion()
     {
-        if (this.currentSuggestionObject && this.currentSuggestionObject[0]) {
-            return this.currentSuggestionObject[0];
+        if (this.currentSuggestionObject.uuid) {
+            return this.currentSuggestionObject;
         }
 
         return false;
@@ -52,23 +52,23 @@ export default class DatalistSelect {
      */
     updateFields(optionId)
     {
-        const self        = this,
+        const self = this,
             suggestions = this.addressSuggestions;
 
         if (optionId) {
             this.currentSuggestionObject = suggestions.getByUuid(optionId);
         }
         console.log(this.currentSuggestionObject);
-        if (self.currentSuggestionObject && self.currentSuggestionObject.length) {
+        if (self.currentSuggestionObject.uuid) {
             // Fill all fields with response values
-            /*self.fields.forEach(function (selector, fieldName) {
+            self.fields.forEach(function (selector, fieldName) {
                 // Get data selector with address item
                 const field = document.querySelector(selector);
 
-                if (field && self.currentSuggestionObject[0][fieldName]) {
-                    field.value = self.currentSuggestionObject[0][fieldName];
+                if (field && self.currentSuggestionObject[fieldName]) {
+                    field.value = self.currentSuggestionObject[fieldName];
                 }
-            });*/
+            });
         }
     }
 }
