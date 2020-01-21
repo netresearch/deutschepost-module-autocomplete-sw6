@@ -32,7 +32,6 @@ export default class AddressAutocomplete {
      */
     addressFields = {};
 
-
     /**
      * @property {AutocompleteAddressSuggestions} addressSuggestions
      */
@@ -75,6 +74,7 @@ export default class AddressAutocomplete {
      * @property {SelectService}
      */
     selectService;
+
     /**
      *
      * @param {{type: string, selector: string}[]} watchedFields
@@ -86,7 +86,6 @@ export default class AddressAutocomplete {
     {
         this.token = token;
         this.stopEventPropagation = false;
-        // this.addressFields = new AutocompleteFields(watchedFields);
         this.addressFields = new Map(watchedFields.map(field => [field.type, field.selector]));
         this.addressSuggestions = new AutocompleteAddressSuggestions(this.addressFields);
         this.addressData = new AutocompleteAddressData();
@@ -158,7 +157,6 @@ export default class AddressAutocomplete {
     handleDatalistSelect(e)
     {
         const uuid = this.datalistRenderer.getSuggestionUuid(e.target);
-        console.log(uuid);
 
         // Update all observed fields after item was selected in datalist
         this.datalistSelectAction.updateFields(uuid, this.addressData);
@@ -198,13 +196,17 @@ export default class AddressAutocomplete {
         }
 
         if (this.countrySelect.isGermany) {
-            const data = this.addressData.getData();
+            const addressData = this.addressData.getData(),
+                subject = addressData.street.length === 0 ?
+                    postdirektAutocomplete.SearchSubjects.PostalCodesCities :
+                    postdirektAutocomplete.SearchSubjects.PostalCodesCitiesStreets;
+
             this.searchService.search(
                 this.searchService.requestBuilder.create(
                     {
                         country: 'de',
-                        subject: postdirektAutocomplete.SearchSubjects.PostalCodesCitiesStreets,
-                        combined: Object.values(data).join(' '),
+                        subject: subject,
+                        combined: Object.values(addressData).join(' '),
                     }
                 )
             ).then(function (response) {
