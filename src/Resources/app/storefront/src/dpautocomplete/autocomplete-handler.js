@@ -2,14 +2,11 @@
  * See LICENSE.md for license details.
  */
 
-import AutocompleteFields from './model/autocomplete-fields';
 import AutocompleteAddressSuggestions from './model/autocomplete-address-suggestions';
 import AutocompleteAddressData from './model/autocomplete-address-data';
-import FieldInput from './action/field-input';
 import CountrySelect from './model/country-select';
-//import DatalistSelect from './action/datalist-select';
-//import ListRenderer from './view/list-renderer';
-//import ExampleData from './model/example-data';
+import DatalistSelect from './action/datalist-select';
+import ListRenderer from './view/list-renderer';
 import postdirektAutocomplete from '../../node_modules/postdirekt-autocomplete/dist/browser/postdirekt-autocomplete.es';
 import 'regenerator-runtime/runtime';
 
@@ -18,7 +15,7 @@ export default class AddressAutocomplete {
     /**
      * @property {int} typingDelay
      */
-    typingDelay = 300;
+    typingDelay = 500;
 
     /**
      * @property {string} timeoutId
@@ -31,7 +28,7 @@ export default class AddressAutocomplete {
     addressItemDivider = ', ';
 
     /**
-     * @property {AutocompleteFields} addressFields
+     * @property {Map<string, string>} addressFields
      */
     addressFields = {};
 
@@ -47,19 +44,14 @@ export default class AddressAutocomplete {
     addressData = {};
 
     /**
-     * @property {FieldInput} fieldInputAction
-     */
-    fieldInputAction = {};
-
-    /**
      * @property {ListRenderer} datalistRenderer
      */
-    //datalistRenderer = {};
+    datalistRenderer = {};
 
     /**
      * @property {DatalistSelect} datalistSelectAction
      */
-    //datalistSelectAction = {};
+    datalistSelectAction = {};
 
     /**
      * @property {CountrySelect} countrySelect
@@ -70,13 +62,13 @@ export default class AddressAutocomplete {
      *
      * @property {string} deCountryId
      */
-    deCountryId = null;
+    deCountryId = '';
 
     /**
      *
-     * @property {postdirektAutocomplete}
+     * @property {SearchService}
      */
-    searchService = null;
+    searchService;
     /**
      *
      * @param {{type: string, selector: string}[]} watchedFields
@@ -88,29 +80,32 @@ export default class AddressAutocomplete {
     {
         this.token = token;
         this.stopEventPropagation = false;
-        this.addressFields = new AutocompleteFields(watchedFields);
-        this.addressSuggestions = new AutocompleteAddressSuggestions({}, this.addressFields);
-        this.addressData = new AutocompleteAddressData({});
+        // this.addressFields = new AutocompleteFields(watchedFields);
+        this.addressFields = new Map(watchedFields.map(field => [field.type, field.selector]));
+        this.addressSuggestions = new AutocompleteAddressSuggestions(this.addressFields);
+        this.addressData = new AutocompleteAddressData();
         this.countrySelect = new CountrySelect(countrySelect, deCountryId);
-        this.fieldInputAction = new FieldInput(this.addressFields, this.addressData);
-        //this.datalistSelectAction = new DatalistSelect(this.addressFields, this.addressSuggestions);
-        //this.datalistRenderer = new ListRenderer(this.addressSuggestions, this.addressItemDivider)
+        this.datalistSelectAction = new DatalistSelect(this.addressFields, this.addressSuggestions);
+        this.datalistRenderer = new ListRenderer(this.addressSuggestions, this.addressItemDivider)
     }
 
     start()
     {
-        this.addressFields.getIds().forEach(function (fieldId) {
-            const fieldItem = this.addressFields.getFieldById(fieldId);
-            fieldItem.setAttribute('data-address-item', fieldId);
+        this.addressFields.forEach(function (selector, type) {
+            const fieldItem = document.querySelector(selector);
+            fieldItem.setAttribute('data-address-item', type);
             fieldItem.addEventListener('keyup', this.handleFieldKeystroke.bind(this));
             fieldItem.addEventListener('focus', this.handleFieldFocus.bind(this));
-            //fieldItem.addEventListener('autocomplete:datalist-select', this.handleDatalistSelect.bind(this));
+            fieldItem.addEventListener('autocomplete:datalist-select', this.handleDatalistSelect.bind(this));
         }.bind(this));
 
         /*for ongoing tasks*/
         this.removeListOnCountryChange();
-        //this.fieldInputAction.updateAdressData();
-
+        this.addressFields.forEach(function (selector) {
+            /** @var {HTMLInputElement} field */
+            const field = document.querySelector(selector);
+            this.addressData.setDataFromField(field);
+        }.bind(this));
         this.searchService = postdirektAutocomplete.createSearchService(this.token);
     }
 
@@ -124,13 +119,17 @@ export default class AddressAutocomplete {
         const navigatorCodes = ['ArrowUp', 'ArrowDown', 'Escape', 'Enter', 'Space', 'Tab'];
 
         if (navigatorCodes.indexOf(e.code) === -1) {
-            this.fieldInputAction.updateAddressDataFromField(e.target);
-            this.triggerDelayedCallback(
-                function () {
-                    this.searchAction(e.target)
-                }.bind(this),
-                this.typingDelay
-            );
+            /** @var {HTMLInputElement} field */
+            const field = e.target;
+            if (field) {
+                this.addressData.setDataFromField(field);
+                this.triggerDelayedCallback(
+                    function () {
+                        this.searchAction(field)
+                    }.bind(this),
+                    this.typingDelay
+                );
+            }
         }
     }
 
@@ -140,27 +139,24 @@ export default class AddressAutocomplete {
      */
     handleFieldFocus(e)
     {
-        /** @var {HTMLElement} field */
+        /** @var {HTMLInputElement} field */
         const field = e.target;
-        this.fieldInputAction.updateAddressDataFromField(field);
+        this.addressData.setDataFromField(field);
     }
 
     /**
      * @private
      * @param {Event} e
      */
-    /*handleDatalistSelect(e)
+    handleDatalistSelect(e)
     {
         const uuid = this.datalistRenderer.getSuggestionUuid(e.target);
-        // Update all observed fields after item was selected in datalist
-        this.datalistSelectAction.updateFields(uuid);
-        this.selectAction();
+        console.log(uuid);
 
-        // Restore focus to the input element
-        (function(target) {
-            target.focus();
-        }).defer(e.target);
-    }*/
+        // Update all observed fields after item was selected in datalist
+        //this.datalistSelectAction.updateFields(uuid);
+        //this.selectAction();
+    }
 
     /**
      * Triggers an delayed callback.
@@ -190,14 +186,12 @@ export default class AddressAutocomplete {
      */
     searchAction(currentField)
     {
-        console.log(currentField);
         if (this.addressData.isEmpty()) {
             return;
         }
 
         if (this.countrySelect.isGermany) {
             const data = this.addressData.getData();
-
             this.searchService.search(
                 this.searchService.requestBuilder.create(
                     {
@@ -206,7 +200,13 @@ export default class AddressAutocomplete {
                         combined: Object.values(data).join(' '),
                     }
                 )
-            ).then(console.log);
+            ).then(function (response) {
+                this.addressSuggestions.setAddressSuggestions(response.addresses);
+                /* Only render anything if the input is still active. */
+                if (currentField === document.activeElement) {
+                    this.datalistRenderer.render(currentField);
+                }
+            }.bind(this));
         }
     }
 
@@ -233,9 +233,9 @@ export default class AddressAutocomplete {
     {
         this.countrySelect.listenOnChange(function (isGermany) {
             if (!isGermany) {
-                this.addressFields.getFields().forEach(function (field) {
-                    console.log(field);
-                    //this.datalistRenderer.removeDatalist(field);
+                this.addressFields.forEach(function (selector) {
+                    const field = document.querySelector(selector);
+                    this.datalistRenderer.removeDatalist(field);
                 }.bind(this));
             }
         }.bind(this));

@@ -6,37 +6,40 @@ export default class AutocompleteAddressSuggestions {
 
     /**
      *
-     * @param {Object} data
-     * @param {AutocompleteFields} autocompleteFields
+     * @type {Object[]}
+     */
+    suggestions = [];
+
+    /**
+     * @param {Map<string,string>} autocompleteFields
      *
      * @constructor
      */
-    constructor(data, autocompleteFields)
+    constructor( autocompleteFields)
     {
-        this.data = data;
         this.autocompleteFields = autocompleteFields;
     }
 
     /**
      * Sets suggestion object.
      *
-     * @param {Object} data
+     * @param {Object[]} suggestions
      *
      */
-    setAddressSuggestions(data)
+    setAddressSuggestions(suggestions)
     {
-        this.data = data;
+        this.suggestions = suggestions;
     }
 
     /**
      * Returns suggestion object.
      *
-     * @returns {Object}
+     * @returns {Object[]}
      *
      */
     getAddressSuggestions()
     {
-        return this.data;
+        return this.suggestions;
     }
     /**
      * Returns suggestion item by Uuid.
@@ -48,7 +51,7 @@ export default class AutocompleteAddressSuggestions {
      */
     getByUuid(uuid)
     {
-        return this.data.filter(function (item) {
+        return this.suggestions.filter(function (item) {
             return item.uuid === uuid;
         });
     }
@@ -61,27 +64,25 @@ export default class AutocompleteAddressSuggestions {
      */
     getAddressSuggestionOptions(divider)
     {
-        const suggestions = this.getAddressSuggestions(),
-            options = [];
-        if (suggestions.length > 0) {
-            suggestions.forEach(function (suggestionItem) {
-                const addressParts = [],
-                    option = {};
+        if (this.suggestions.length > 0) {
+            return this.suggestions.map(function (suggestionItem) {
+                let addressParts = [];
 
                 // Combine all address items to suggestion string, divided by divider
-                this.autocompleteFields.getNames().forEach(function (fieldName) {
+                this.autocompleteFields.forEach(function (selector, fieldName) {
                     if (suggestionItem[fieldName] && suggestionItem[fieldName].length) {
                         addressParts.push(suggestionItem[fieldName]);
                     }
                 });
 
-                option.id = suggestionItem.uuid;
-                option.title = addressParts.join(divider);
+                return {
+                    id: suggestionItem.uuid,
+                    title: addressParts.join(divider)
+                };
 
-                options.push(option);
             }.bind(this));
         }
 
-        return options;
+        return [];
     }
 }

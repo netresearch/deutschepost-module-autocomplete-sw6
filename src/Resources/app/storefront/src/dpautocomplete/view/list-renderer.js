@@ -14,6 +14,12 @@ export default class ListRenderer {
     divider = '';
 
     /**
+     *
+     * @property {boolean} stopEventPropagation
+     */
+    stopEventPropagation = false;
+
+    /**
      * @param {AutocompleteAddressSuggestions} suggestions
      * @param {string} divider
      *
@@ -36,41 +42,44 @@ export default class ListRenderer {
         /** Disable native autocomplete to avoid overlapping suggestions. */
         currentField.setAttribute('autocomplete', 'off');
 
-        const dataList = new Element('ul', {
-            'id': 'datalist-' + currentField.id,
-            'class' : 'datalist',
-            'style' : 'width:' + currentField.offsetWidth + 'px',
-        });
+        const dataList = document.createElement('ul');
+        dataList.setAttribute('id', 'datalist-' + currentField.id);
+        dataList.setAttribute('class', 'datalist');
+        dataList.setAttribute('style', 'width:' + currentField.offsetWidth + 'px');
 
         const suggestionOptions = this.suggestions.getAddressSuggestionOptions(this.divider);
         if (suggestionOptions.length > 0) {
-            suggestionOptions.each(function (option) {
-                var $li = new Element('li', {'id': option.id, 'data-value': option.title});
-                $li.update(option.title);
-                dataList.insert({bottom: $li});
+            suggestionOptions.forEach(function (option) {
+                const li = document.createElement('li');
+                li.setAttribute('id', option.id);
+                li.setAttribute('data-value', option.title);
+                const label = document.createTextNode(option.title);
+                li.appendChild(label);
+                dataList.appendChild(li);
             });
         }
-        currentField.insert({after: dataList});
+        const fieldContainer = currentField.parentElement;
+        fieldContainer.appendChild(dataList);
         currentField.setAttribute('list', 'datalist-' + currentField.id);
 
         /**
          * Trigger an Item select when a datalist option is clicked.
          */
-        dataList.observe('mousedown', function (e) {
+        dataList.addEventListener('mousedown', function (e) {
             this.itemSelect(e.target, currentField);
         }.bind(this));
 
         /**
          * Hide the datalist when the field is no longer in focus.
          */
-        currentField.observe('focusout', function () {
+        currentField.addEventListener('focusout', function () {
             this.removeDatalist(currentField);
         }.bind(this));
 
         /**
          * Add listener to observe address field navigation keydowns.
          */
-        currentField.observe('keydown', this.navigationKeyListener.bind(this));
+        currentField.addEventListener('keydown', this.navigationKeyListener.bind(this));
     }
 
     /**
@@ -94,8 +103,7 @@ export default class ListRenderer {
      */
     getSuggestionUuid(currentField)
     {
-        var fieldValue  = currentField.value,
-            option      = currentField.next('ul').down('[data-value=\'' + fieldValue + '\']');
+        const option = currentField.parentElement.querySelector('[data-value="' + currentField.value + '"]');
 
         return option.id;
     }
@@ -107,13 +115,13 @@ export default class ListRenderer {
      */
     removeDatalist(field)
     {
-        const datalist = document.querySelector('datalist-' + field.id);
+        const datalist = document.querySelector('#datalist-' + field.id);
 
         if (datalist) {
             datalist.remove();
         }
         /** It is not possible to stop observing a bound method, so we stop all keydown observers. */
-        field.stopObserving('keydown');
+
     }
 
     /**
@@ -124,7 +132,8 @@ export default class ListRenderer {
      */
     navigationKeyListener(e)
     {
-        var isUp = e.key === 'ArrowUp',
+
+        const isUp = e.key === 'ArrowUp',
             isDown = e.key === 'ArrowDown',
             isEnter = e.key === 'Enter',
             isTab = e.key === 'Tab';
@@ -139,24 +148,23 @@ export default class ListRenderer {
     /**
      * Keyboard navigation for ul
      *
-     * @param {HTMLElement} $field
+     * @param {HTMLElement} field
      * @param {boolean} isDown
      * @param {boolean} isUp
      * @param {boolean} isEnter
      * @param {boolean} isTab
      */
-    triggerKeydown($field, isDown, isUp, isEnter, isTab)
+    triggerKeydown(field, isDown, isUp, isEnter, isTab)
     {
-        const fieldId = $field.id,
-            dataList = document.querySelector('datalist-' + fieldId);
-        let dataOptions;
+        const dataList = document.querySelector('#datalist-' + field.id);
 
         if (!dataList) {
             return;
         }
 
-        dataOptions = dataList.childElements();
-        const activeItem = dataList.down('[data-active]'),
+        const dataOptions = dataList.children;
+
+        const activeItem = dataList.querySelector('[data-active]'),
             firstItem = dataOptions[0];
 
         if (!activeItem && isEnter) {
@@ -165,6 +173,7 @@ export default class ListRenderer {
 
         if (isDown && !activeItem) {
             firstItem.setAttribute('data-active', 'true');
+            firstItem.setAttribute('style', 'background: gray');
         } else if (activeItem) {
             let prevVisible = null;
             let nextVisible = null;
@@ -178,32 +187,37 @@ export default class ListRenderer {
                 }
             }
             activeItem.removeAttribute('data-active');
+            activeItem.removeAttribute('style');
 
             if (isUp) {
                 if (prevVisible) {
                     prevVisible.setAttribute('data-active', 'true');
+                    prevVisible.setAttribute('style', 'background: gray');
                     if ( prevVisible.offsetTop < dataList.scrollTop ) {
                         dataList.scrollTop -= prevVisible.offsetHeight;
                     }
                 } else {
                     dataOptions[dataOptions.length - 1].setAttribute('data-active', 'true');
+                    dataOptions[dataOptions.length - 1].setAttribute('style', 'background: gray');
                 }
             }
             if (isDown) {
                 if (nextVisible) {
                     nextVisible.setAttribute('data-active', 'true');
+                    nextVisible.setAttribute('style', 'background: gray');
                 } else {
                     dataOptions[0].setAttribute('data-active', 'true');
+                    dataOptions[0].setAttribute('style', 'background: gray');
                 }
             }
 
             if (isEnter || isTab) {
-                this.itemSelect(activeItem, $field);
+                this.itemSelect(activeItem, field);
             }
 
             if (isTab) {
                 // Focus the current field so the tab command moves the focus to the next input
-                $field.focus();
+                field.focus();
             }
         }
     }
