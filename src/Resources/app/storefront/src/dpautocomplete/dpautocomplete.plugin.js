@@ -6,7 +6,7 @@ import Plugin from 'src/plugin-system/plugin.class';
 import AddressAutocomplete from './autocomplete-handler';
 
 export default class DPAutocompletePlugin extends Plugin {
-    static options = {
+    options = {
         token: null,
         fields: [],
         countries: [],
