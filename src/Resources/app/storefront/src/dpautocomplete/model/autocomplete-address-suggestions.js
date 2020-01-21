@@ -51,9 +51,7 @@ export default class AutocompleteAddressSuggestions {
      */
     getByUuid(uuid)
     {
-        return this.suggestions.filter(function (item) {
-            return item.uuid === uuid;
-        });
+        return this.suggestions.find(item => item.uuid === uuid);
     }
 
     /**
@@ -66,7 +64,7 @@ export default class AutocompleteAddressSuggestions {
     {
         if (this.suggestions.length > 0) {
             return this.suggestions.map(function (suggestionItem) {
-                let addressParts = [];
+                const addressParts = [];
 
                 // Combine all address items to suggestion string, divided by divider
                 this.autocompleteFields.forEach(function (selector, fieldName) {
@@ -77,7 +75,7 @@ export default class AutocompleteAddressSuggestions {
 
                 return {
                     id: suggestionItem.uuid,
-                    title: addressParts.join(divider)
+                    title: addressParts.join(divider),
                 };
 
             }.bind(this));
