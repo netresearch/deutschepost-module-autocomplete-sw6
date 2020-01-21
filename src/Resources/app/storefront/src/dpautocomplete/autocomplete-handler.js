@@ -154,7 +154,7 @@ export default class AddressAutocomplete {
         console.log(uuid);
 
         // Update all observed fields after item was selected in datalist
-        //this.datalistSelectAction.updateFields(uuid);
+        this.datalistSelectAction.updateFields(uuid);
         //this.selectAction();
     }
 
