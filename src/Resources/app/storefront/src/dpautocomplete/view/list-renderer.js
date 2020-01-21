@@ -67,6 +67,9 @@ export default class ListRenderer {
          */
         dataList.addEventListener('mousedown', function (e) {
             this.itemSelect(e.target, currentField);
+            setTimeout(function () {
+                currentField.focus();
+            },0);
         }.bind(this));
 
         /**
@@ -79,7 +82,10 @@ export default class ListRenderer {
         /**
          * Add listener to observe address field navigation keydowns.
          */
-        currentField.addEventListener('keydown', this.navigationKeyListener.bind(this));
+
+        this.removableEventHandler = this.navigationKeyListener.bind(this);
+
+        currentField.addEventListener('keydown', this.removableEventHandler);
     }
 
     /**
@@ -120,8 +126,8 @@ export default class ListRenderer {
         if (datalist) {
             datalist.remove();
         }
-        /** It is not possible to stop observing a bound method, so we stop all keydown observers. */
 
+        field.removeEventListener('keydown', this.removableEventHandler);
     }
 
     /**
