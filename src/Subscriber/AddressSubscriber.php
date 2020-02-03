@@ -23,13 +23,12 @@ use Shopware\Storefront\Page\PageLoadedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Class AddressSubscriber
- *
  * Subscribes AccountLoginPageLoadedEvent,AddressListingPageLoadedEvent, CheckoutRegisterPageLoadedEvent,
  * AddressDetailPageLoadedEvent and provides api token to page objects if autocomplete service is enabled.
  *
  * @author   Andreas Müller <andreas.mueller@netresearch.de>
- * @link     https://www.netresearch.de/
+ *
+ * @see     https://www.netresearch.de/
  */
 class AddressSubscriber implements EventSubscriberInterface
 {
@@ -45,12 +44,6 @@ class AddressSubscriber implements EventSubscriberInterface
      */
     private $moduleConfig;
 
-    /**
-     * AddressSubscriber constructor.
-     *
-     * @param AuthenticationService $authService
-     * @param ModuleConfig $moduleConfig
-     */
     public function __construct(
         AuthenticationService $authService,
         ModuleConfig $moduleConfig
@@ -72,7 +65,7 @@ class AddressSubscriber implements EventSubscriberInterface
     /**
      * When page is loaded, fetch API token and pass it into the page context for templates to use
      *
-     * @param AccountLoginPage|AddressListingPage|CheckoutRegisterPage|AddressDetailPage|PageLoadedEvent $event
+     * @param AccountLoginPageLoadedEvent|AddressListingPageLoadedEvent|CheckoutRegisterPageLoadedEvent|AddressDetailPageLoadedEvent|PageLoadedEvent $event
      */
     public function onAddressPagesLoaded(PageLoadedEvent $event): void
     {
@@ -84,7 +77,7 @@ class AddressSubscriber implements EventSubscriberInterface
         try {
             $token = $this->authService->fetchToken($salesChannelId);
         } catch (\RuntimeException $exception) {
-            /**
+            /*
              * Logging is already done in SDK, we will just early return here to avoid rendering of
              * our element in the templates
              */
