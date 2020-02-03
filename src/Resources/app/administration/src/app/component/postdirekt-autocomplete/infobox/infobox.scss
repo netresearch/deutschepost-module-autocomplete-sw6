@@ -1,0 +1,17 @@
+.nr-infobox {
+    border-radius: 4px;
+    overflow: hidden;
+    .header {
+        color: black;
+        padding: 15px 25px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .body {
+        h1,h2,h3,h4 {
+            margin: 10px 0;
+        }
+        padding: 25px;
+    }
+}
