@@ -1,4 +1,0 @@
-parameters:
-    reportUnmatchedIgnoredErrors: false
-    excludes_analyse:
-        - tests/TestBootstrap.php
