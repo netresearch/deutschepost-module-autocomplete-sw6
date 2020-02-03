@@ -11,14 +11,15 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "PostDirekt\\Autocomplete\\Test": "test/"
+            "PostDirekt\\Autocomplete\\Test\\": "test/"
         }
     },
     "require": {
         "php": ">=7.2.0",
-        "shopware/storefront": ">=6.0.0",
-        "shopware/core": ">=6.0.0",
-        "postdirekt/sdk-api-autocomplete": "^1.0.0"
+        "shopware/storefront": "~6.1.0",
+        "shopware/core": "~6.1.0",
+        "postdirekt/sdk-api-autocomplete": "^1.0.0",
+        "symfony/http-client": "^4.0 | ^5.0"
     },
     "extra": {
         "shopware-plugin-class": "PostDirekt\\Autocomplete\\NRPostDirektAutocomplete",

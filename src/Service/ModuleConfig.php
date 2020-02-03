@@ -11,10 +11,9 @@ namespace PostDirekt\Autocomplete\Service;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 
 /**
- * Class ModuleConfig
- *
  * @author Paul Siedler <paul.siedler@netresearch.de>
- * @link https://www.netresearch.de/
+ *
+ * @see https://www.netresearch.de/
  */
 class ModuleConfig
 {
@@ -25,11 +24,6 @@ class ModuleConfig
      */
     private $systemConfig;
 
-    /**
-     * ModuleConfig constructor.
-     *
-     * @param SystemConfigService $systemConfig
-     */
     public function __construct(SystemConfigService $systemConfig)
     {
         $this->systemConfig = $systemConfig;
@@ -37,9 +31,6 @@ class ModuleConfig
 
     /**
      * Check wether module functionality is activated
-     *
-     * @param string|null $salesChannelId
-     * @return bool
      */
     public function isActive(?string $salesChannelId = null): bool
     {
@@ -48,9 +39,6 @@ class ModuleConfig
 
     /**
      * Check wether sandbox endpoint is activated
-     *
-     * @param string|null $salesChannelId
-     * @return bool
      */
     public function isSandboxEnabled(?string $salesChannelId = null): bool
     {
@@ -59,9 +47,6 @@ class ModuleConfig
 
     /**
      * Check wether logging is enabled
-     *
-     * @param string|null $salesChannelId
-     * @return bool
      */
     public function isLoggingEnabled(?string $salesChannelId = null): bool
     {
@@ -70,9 +55,6 @@ class ModuleConfig
 
     /**
      * Fetch API user
-     *
-     * @param string|null $salesChannelId
-     * @return string
      */
     public function getApiUser(?string $salesChannelId = null): string
     {
@@ -81,9 +63,6 @@ class ModuleConfig
 
     /**
      * Fetch API password
-     *
-     * @param string|null $salesChannelId
-     * @return string
      */
     public function getApiPassword(?string $salesChannelId = null): string
     {

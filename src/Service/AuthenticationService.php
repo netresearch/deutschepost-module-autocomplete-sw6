@@ -13,11 +13,9 @@ use PostDirekt\Sdk\Autocomplete\Exception\ServiceException;
 use Psr\Log\LoggerInterface;
 
 /**
- * Class AuthenticationService
- *
- * @package  PostDirekt\Autocomplete\Service
  * @author   Andreas Müller <andreas.mueller@netresearch.de>
- * @link     https://www.netresearch.de/
+ *
+ * @see     https://www.netresearch.de/
  */
 class AuthenticationService
 {
@@ -29,43 +27,34 @@ class AuthenticationService
     /**
      * @var ServiceFactoryInterface
      */
-    private $authService;
+    private $serviceFactory;
 
     /**
      * @var LoggerInterface
      */
     private $logger;
 
-    /**
-     * AuthenticationService constructor.
-     *
-     * @param ModuleConfig $config
-     * @param ServiceFactoryInterface $authService
-     * @param LoggerInterface $logger
-     */
     public function __construct(
         ModuleConfig $config,
-        ServiceFactoryInterface $authService,
+        ServiceFactoryInterface $serviceFactory,
         LoggerInterface $logger
     ) {
         $this->config = $config;
-        $this->authService = $authService;
+        $this->serviceFactory = $serviceFactory;
         $this->logger = $logger;
     }
 
     /**
      * Fetch Authentication Token for Autocomplete API
      *
-     * @param $salesChannelId
-     * @return string
      * @throws \RuntimeException
      */
-    public function fetchToken($salesChannelId): string
+    public function fetchToken(string $salesChannelId): string
     {
         $apiUser = $this->config->getApiUser($salesChannelId);
         $apiPassword = $this->config->getApiPassword($salesChannelId);
         try {
-            $authService = $this->authService->createAuthenticationService($this->logger);
+            $authService = $this->serviceFactory->createAuthenticationService($this->logger);
             $token = $authService->authenticate($apiUser, $apiPassword);
         } catch (ServiceException $exception) {
             throw new \RuntimeException('Unable to fetch token');
