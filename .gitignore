@@ -1,2 +1,5 @@
 src/Resources/app/storefront/dist
 src/Resources/app/storefront/node_modules
+vendor
+.phpunit.result.cache
+phpstan.neon
