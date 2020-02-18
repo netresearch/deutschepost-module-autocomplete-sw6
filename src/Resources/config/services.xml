@@ -4,19 +4,19 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <!-- Service for retrieving Configurations -->
-        <service id="PostDirekt\Autocomplete\Service\ModuleConfig">
+        <service id="PostDirekt\Autocomplete\Service\ModuleConfig" public="true">
             <argument id="Shopware\Core\System\SystemConfig\SystemConfigService" type="service"/>
         </service>
         <!-- Application layer wrapper for the Autocomplete SDK Authentication-->
-        <service id="PostDirekt\Autocomplete\Service\AuthenticationService">
+        <service id="PostDirekt\Autocomplete\Service\AuthenticationService" public="true">
             <argument id="PostDirekt\Autocomplete\Service\ModuleConfig" type="service"/>
             <argument id="PostDirekt\Sdk\Autocomplete\Service\ServiceFactory" type="service"/>
             <argument id="monolog.logger" type="service"/>
         </service>
         <!-- Propagated Factory from the Autocomplete SDK -->
-        <service id="PostDirekt\Sdk\Autocomplete\Service\ServiceFactory"/>
+        <service id="PostDirekt\Sdk\Autocomplete\Service\ServiceFactory" public="true"/>
         <!-- Event subscriber for adding the API token to the frontend -->
-        <service id="PostDirekt\Autocomplete\Subscriber\AddressSubscriber">
+        <service id="PostDirekt\Autocomplete\Subscriber\AddressSubscriber" public="true">
             <argument id="PostDirekt\Autocomplete\Service\AuthenticationService" type="service"/>
             <argument id="PostDirekt\Autocomplete\Service\ModuleConfig" type="service"/>
             <tag name="kernel.event_subscriber"/>
