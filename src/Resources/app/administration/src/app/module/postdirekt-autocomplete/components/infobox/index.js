@@ -21,9 +21,5 @@ Shopware.Component.register('infobox', {
             type: String,
             required: true,
         },
-        bodyHtml: {
-            type: String,
-            required: true,
-        },
     },
 });
