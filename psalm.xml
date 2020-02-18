@@ -23,7 +23,7 @@
                 <!-- PHPUnit test case property will not be explicitly set by our test classes (no constructor overwrite) -->
                 <referencedProperty name="PHPUnit\Framework\TestCase::$backupGlobals"/>
                 <!-- Property set in setup method -->
-                <referencedProperty name="PostDirekt\Autocomplete\Test\Service\ModuleConfigTest::$subject"/>
+                <directory name="test"/>
             </errorLevel>
         </PropertyNotSetInConstructor>
         <InternalMethod>
@@ -32,5 +32,19 @@
                 <directory name="test"/>
             </errorLevel>
         </InternalMethod>
+        <PossiblyUndefinedMethod>
+            <errorLevel type="info">
+<!-- Mock object methods are not properly recognized due to compound type -->
+                <directory name="test"/>
+            </errorLevel>
+        </PossiblyUndefinedMethod>
+        <PossiblyInvalidArgument>
+            <errorLevel type="info">
+<!-- Mock objects do not satisfy type requirements of constructors due to compound type -->
+                <directory name="test"/>
+            </errorLevel>
+        </PossiblyInvalidArgument>
+<!-- test/TestBootstrap dynamically includes things, which psalm can not resolve -->
+        <UnresolvableInclude errorLevel="info"/>
     </issueHandlers>
 </psalm>
