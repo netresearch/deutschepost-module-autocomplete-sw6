@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
     <card>
         <title>Deutsche Post Direkt</title>
         <component name="infobox">
@@ -9,17 +10,6 @@
             <version>1.0.0</version>
             <headerColor>#FFD633</headerColor>
             <bodyColor>#FEFCEE</bodyColor>
-            <bodyHtml><![CDATA[
-<p>Bei unvollständigen Adressdaten bietet DATAFACTORY AUTOCOMPLETE von Deutsche Post Direkt wirkungsvolle
-    Unterstützung. Bereits bei der Eingabe der ersten alphanumerischen Zeichen in das Eingabefeld erhalten Sie
-    bis zu 15 Vorschläge. Insgesamt stehen etwa 1,2 Millionen unterschiedliche Adressvorschläge zur Verfügung,
-    darunter alle zustellrelevanten Straßen, mehr als 16.000 Postleitzahlen, 14.000 Ortsnamen und 75.000
-    Ortsteilnamen.</p>
-<h2>Einfach loslegen:</h2>
-<p>Sie benötigen einen gültigen Account der Deutsche Post Direkt. Wenn Sie noch keinen gültigen oder aktivierten
-    Account haben, <a href="https://www.postdirekt.de/autocomplete" target="_blank">kontaktieren Sie bitte die
-    Deutsche Post Direkt</a>, um von unseren Adresslösungen zu profitieren.</p>
-]]></bodyHtml>
         </component>
     </card>
     <card>

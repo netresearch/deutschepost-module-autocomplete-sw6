@@ -1,1 +1,1 @@
-import './app/component/postdirekt-autocomplete/infobox';
+import './app/module';
