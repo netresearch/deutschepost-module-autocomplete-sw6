@@ -4,6 +4,6 @@
         <img height="40px" alt="Logo" class="logo" :src="logo | asset"/>
         <div class="version">{{ version }}</div>
     </div>
-    <div class="body" :style="'background-color:' + bodyColor" v-html="bodyHtml"></div>
+    <div class="body" :style="'background-color:' + bodyColor" v-html="$tc('postdirekt-autocomplete.infobox.bodyHtml')"></div>
 </div>
 {% endblock %}
