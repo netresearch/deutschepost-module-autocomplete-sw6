@@ -1,5 +1,5 @@
 src/Resources/app/storefront/dist
-src/Resources/app/storefront/node_modules
+**/node_modules
 src/Resources/public
 vendor
 .phpunit.result.cache
