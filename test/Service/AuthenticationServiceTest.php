@@ -12,10 +12,10 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use PostDirekt\Autocomplete\Service\AuthenticationService as AuthService;
 use PostDirekt\Autocomplete\Service\ModuleConfig;
-use PostDirekt\Sdk\Autocomplete\Api\AuthenticationServiceInterface;
-use PostDirekt\Sdk\Autocomplete\Api\ServiceFactoryInterface;
-use PostDirekt\Sdk\Autocomplete\Exception\ServiceException;
-use PostDirekt\Sdk\Autocomplete\Model\Token;
+use PostDirekt\Sdk\Autocomplete\Authentication\Api\AuthenticationServiceInterface;
+use PostDirekt\Sdk\Autocomplete\Authentication\Api\ServiceFactoryInterface;
+use PostDirekt\Sdk\Autocomplete\Authentication\Exception\ServiceException;
+use PostDirekt\Sdk\Autocomplete\Authentication\Model\Token;
 use Psr\Log\Test\TestLogger;
 use Shopware\Core\Defaults;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
@@ -74,10 +74,6 @@ class AuthenticationServiceTest extends TestCase
 
         $this->authenticationService->expects($this->once())
                                     ->method('authenticate')
-                                    ->with(
-                                        $this->config->getApiUser($salesChannelId),
-                                        $this->config->getApiPassword($salesChannelId)
-                                    )
                                     ->willReturn($expected);
         $this->service->expects($this->once())
                       ->method('createAuthenticationService')
@@ -95,10 +91,6 @@ class AuthenticationServiceTest extends TestCase
 
         $this->authenticationService->expects($this->once())
                                     ->method('authenticate')
-                                    ->with(
-                                        $this->config->getApiUser($salesChannelId),
-                                        $this->config->getApiPassword($salesChannelId)
-                                    )
                                     ->will($this->throwException($exception));
         $this->service->expects($this->once())
                       ->method('createAuthenticationService')
