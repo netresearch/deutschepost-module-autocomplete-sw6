@@ -10,11 +10,11 @@
         <!-- Application layer wrapper for the Autocomplete SDK Authentication-->
         <service id="PostDirekt\Autocomplete\Service\AuthenticationService" public="true">
             <argument id="PostDirekt\Autocomplete\Service\ModuleConfig" type="service"/>
-            <argument id="PostDirekt\Sdk\Autocomplete\Service\ServiceFactory" type="service"/>
+            <argument id="PostDirekt\Sdk\Autocomplete\Authentication\Service\ServiceFactory" type="service"/>
             <argument id="monolog.logger" type="service"/>
         </service>
         <!-- Propagated Factory from the Autocomplete SDK -->
-        <service id="PostDirekt\Sdk\Autocomplete\Service\ServiceFactory" public="true"/>
+        <service id="PostDirekt\Sdk\Autocomplete\Authentication\Service\ServiceFactory" public="true"/>
         <!-- Event subscriber for adding the API token to the frontend -->
         <service id="PostDirekt\Autocomplete\Subscriber\AddressSubscriber" public="true">
             <argument id="PostDirekt\Autocomplete\Service\AuthenticationService" type="service"/>

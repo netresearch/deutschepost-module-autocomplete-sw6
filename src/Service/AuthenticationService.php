@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 namespace PostDirekt\Autocomplete\Service;
 
-use PostDirekt\Sdk\Autocomplete\Api\ServiceFactoryInterface;
-use PostDirekt\Sdk\Autocomplete\Exception\ServiceException;
+use PostDirekt\Sdk\Autocomplete\Authentication\Api\ServiceFactoryInterface;
+use PostDirekt\Sdk\Autocomplete\Authentication\Exception\ServiceException;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -54,8 +54,8 @@ class AuthenticationService
         $apiUser = $this->config->getApiUser($salesChannelId);
         $apiPassword = $this->config->getApiPassword($salesChannelId);
         try {
-            $authService = $this->serviceFactory->createAuthenticationService($this->logger);
-            $token = $authService->authenticate($apiUser, $apiPassword);
+            $authService = $this->serviceFactory->createAuthenticationService($apiUser, $apiPassword, $this->logger);
+            $token = $authService->authenticate();
         } catch (ServiceException $exception) {
             throw new \RuntimeException('Unable to fetch token');
         }

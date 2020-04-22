@@ -1,7 +1,14 @@
 /// <reference types="Cypress" />
 describe('PostdirektAutocompleteCypressTest: Test registration address', () => {
+    afterEach(function () {
+        if (this.currentTest.state === 'failed') {
+            cy.screenshot(this.currentTest.fullTitle(), {
+                capture: 'fullPage'
+            });
+        }
+    });
     it('configure autocomplete plugin', () => {
-        cy.loginViaApi()
+        cy.login('admin')
             .then(() => {
                 cy.setLocaleToEnGb();
             });
@@ -61,7 +68,7 @@ describe('PostdirektAutocompleteCypressTest: Test registration address', () => {
 
         cy.get('input[name="billingAddress[street]"]').type(' 11d');
         cy.get('.custom-control-label').click();
-        cy.get('#shippingAddressAddressCountry').select('DE');
+        cy.get('#shippingAddressAddressCountry').select('Germany');
         cy.get('#shippingAddressAddressCity').type('Leipz');
         cy.wait(200).then(() => {
             cy.get('#datalist-shippingAddressAddressCity').should('be.visible');
@@ -80,6 +87,5 @@ describe('PostdirektAutocompleteCypressTest: Test registration address', () => {
             let streetName = $li.get(0).innerText.split(',')[0];
             cy.get('input[name="shippingAddress[street]"]').type('{enter}').should('have.value', streetName);
         });
-        cy.cleanUpPreviousState();
     });
 });
