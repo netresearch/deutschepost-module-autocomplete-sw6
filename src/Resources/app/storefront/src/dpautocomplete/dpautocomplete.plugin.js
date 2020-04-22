@@ -3,24 +3,31 @@
  */
 
 import Plugin from 'src/plugin-system/plugin.class';
-import AddressAutocomplete from './autocomplete-handler';
+import autocomplete from '@netresearch/postdirekt-autocomplete-library';
 
 export default class DPAutocompletePlugin extends Plugin {
     options = {
         token: null,
-        fields: [],
-        countries: [],
+        streetFieldSelector: null,
+        cityFieldSelector: null,
+        postalCodeFieldSelector: null,
+        countryFieldSelector: null,
         deCountryId: null,
-        isDeCountrySelect: false,
     };
 
-    init()
-    {
-        const countrySelectSelector = this.options.fields.filter(item => item.type === 'country')[0],
-            watchedFields = this.options.fields.filter(item => item.type !== 'country');
-
-        const Handler = new AddressAutocomplete(watchedFields, countrySelectSelector, this.options.deCountryId, this.options.token);
-        Handler.start();
+    init() {
+        const streetInput = document.querySelector(this.options.streetFieldSelector);
+        const cityInput = document.querySelector(this.options.cityFieldSelector);
+        const postalCodeInput = document.querySelector(this.options.postalCodeFieldSelector);
+        const countryInput = document.querySelector(this.options.countryFieldSelector);
+        autocomplete.init(
+            streetInput,
+            cityInput,
+            postalCodeInput,
+            countryInput,
+            this.options.deCountryId,
+            this.options.token
+        );
     }
 
 }
