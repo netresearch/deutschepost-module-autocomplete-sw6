@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Deutsche Post Direkt</title>
+        <component name="infobox">
+            <name>infobox</name>
+            <logo>nrpostdirektautocomplete/static/assets/images/deutsche-post-logo.svg</logo>
+            <version>1.0.0</version>
+            <headerColor>#FFD633</headerColor>
+            <bodyColor>#FEFCEE</bodyColor>
+        </component>
+    </card>
+    <card>
+        <title>Autocomplete Settings</title>
+        <title lang="de-DE">Autocomplete Einstellungen</title>
+        <input-field type="bool">
+            <name>active</name>
+            <label>Active</label>
+            <label lang="de-DE">Aktiviert</label>
+        </input-field>
+        <input-field type="bool">
+            <name>logging</name>
+            <label>Log API communication</label>
+            <label lang="de-DE">Protokolliere API Kommunikation</label>
+        </input-field>
+        <input-field>
+            <name>apiUser</name>
+            <label>API User</label>
+            <label lang="de-DE">API Nutzer</label>
+        </input-field>
+        <input-field type="password">
+            <name>apiPassword</name>
+            <label>API Password</label>
+            <label lang="de-DE">API Password</label>
+        </input-field>
+    </card>
+</config>

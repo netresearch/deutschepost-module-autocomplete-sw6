@@ -1,0 +1,27 @@
+.datalist {
+    position: relative;
+    z-index: 100;
+    list-style: none;
+    background: white;
+    border-right:1px solid silver;
+    border-bottom: 1px solid silver;
+    border-left: 1px solid silver;
+    margin: 0;
+    padding: 0;
+    height: auto;
+}
+
+.datalist:empty {
+    display: none !important;
+}
+
+.datalist > li {
+    padding: 3px;
+    font: inherit;
+    line-height: 1.5;
+}
+
+.datalist > li:hover, .datalist > li[data-active]{
+    background: $sw-color-brand-primary;
+    color: white;
+}

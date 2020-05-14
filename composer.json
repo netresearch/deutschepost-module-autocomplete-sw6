@@ -1,0 +1,35 @@
+{
+    "name": "netresearch/postdirekt-autocomplete",
+    "description": "Deutsche Post Direkt Addressfactory Integration for Shopware6",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PostDirekt\\Autocomplete\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PostDirekt\\Autocomplete\\Test\\": "test/"
+        }
+    },
+    "require": {
+        "php": ">=7.2.0",
+        "shopware/storefront": "~6.1.0",
+        "shopware/core": "~6.1.0",
+        "deutschepost/sdk-api-autocomplete-authentication": "^1.0",
+        "symfony/http-client": "^4.0 | ^5.0",
+        "nyholm/psr7": "1.2.1"
+    },
+    "extra": {
+        "shopware-plugin-class": "PostDirekt\\Autocomplete\\NRPostDirektAutocomplete",
+        "label": {
+            "de-DE": "Deutsche Post Direkt Autocomplete",
+            "en-GB": "Deutsche Post Direkt Autocomplete"
+        },
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
