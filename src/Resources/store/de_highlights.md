@@ -1,0 +1,5 @@
+- Mehr Benutzerfreundlichkeit durch schnelle und komfortable Adresseingabe
+- Weniger Kaufabbrüche, mehr Conversion
+- Reduzierung von Retouren durch postalisch korrekte Daten
+- Zugriff auf das Straßenverzeichnis auf Basis der originalen Postleitzahlen der Deutschen Post
+- Kaufentscheidung ohne Risiko durch 30-Tage-Gratistest
