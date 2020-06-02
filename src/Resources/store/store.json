@@ -1,0 +1,23 @@
+{
+    "storeAvailabilities": [
+        "International"
+    ],
+    "standardLocale": "en_GB",
+    "localizations": [
+        "en_GB",
+        "de_DE"
+    ],
+    "categories": [
+        "Versand", "Bestellprozess", "ConversionOptimierung"
+    ],
+    "productType": "extension",
+    "responsive": true,
+    "tags": {
+        "en": [
+            "address"
+        ],
+        "de": [
+            "Adresse"
+        ]
+    }
+}
