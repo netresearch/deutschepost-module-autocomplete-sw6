@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<psalm
+    autoloader="../../../vendor/autoload.php"
+    findUnusedVariablesAndParams="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config ../../../dev-ops/analyze/vendor-bin/psalm/vendor/vimeo/psalm/config.xsd"
+>
+    <projectFiles>
+        <directory name="src"/>
+        <directory name="test"/>
+        <ignoreFiles>
+            <directory name="../../../platform"/> <!-- would otherwise inspect Shopware -->
+            <directory name="../../../vendor/shopware/platform"/> <!-- would otherwise inspect Shopware -->
+        </ignoreFiles>
+    </projectFiles>
+    <issueHandlers>
+        <!-- NRPostDirektAutocomplete does not have property in constructor, however it is referenced due to
+        \Symfony\Component\HttpKernel\Bundle\Bundle -->
+        <PropertyNotSetInConstructor>
+            <errorLevel type="info">
+                <referencedProperty name="Symfony\Component\DependencyInjection\ContainerAwareTrait::$container"/>
+                <!-- PHPUnit test case property will not be explicitly set by our test classes (no constructor overwrite) -->
+                <referencedProperty name="PHPUnit\Framework\TestCase::$backupGlobals"/>
+                <!-- Property set in setup method -->
+                <directory name="test"/>
+            </errorLevel>
+        </PropertyNotSetInConstructor>
+        <InternalMethod>
+            <errorLevel type="info">
+                <!-- For some reason psalm thinks some PHPUnit mock manipulation methods are internal -->
+                <directory name="test"/>
+            </errorLevel>
+        </InternalMethod>
+        <PossiblyUndefinedMethod>
+            <errorLevel type="info">
+<!-- Mock object methods are not properly recognized due to compound type -->
+                <directory name="test"/>
+            </errorLevel>
+        </PossiblyUndefinedMethod>
+        <PossiblyInvalidArgument>
+            <errorLevel type="info">
+<!-- Mock objects do not satisfy type requirements of constructors due to compound type -->
+                <directory name="test"/>
+            </errorLevel>
+        </PossiblyInvalidArgument>
+<!-- test/TestBootstrap dynamically includes things, which psalm can not resolve -->
+        <UnresolvableInclude errorLevel="info"/>
+    </issueHandlers>
+</psalm>

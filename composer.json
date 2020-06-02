@@ -1,0 +1,57 @@
+{
+    "name": "netresearch/postdirekt-autocomplete",
+    "description": "Deutsche Post Direkt Addressfactory Integration for Shopware6",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PostDirekt\\Autocomplete\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PostDirekt\\Autocomplete\\Test\\": "test/"
+        },
+        "files": [
+            "autoload-dist/PluginIsManagedByComposer.php"
+        ]
+    },
+    "require": {
+        "php": ">=7.2.0",
+        "shopware/storefront": "~6.1.0 || ~6.2.0",
+        "shopware/core": "~6.1.0 || ~6.2.0",
+        "deutschepost/sdk-api-autocomplete-authentication": "^1.0",
+        "php-http/guzzle6-adapter": "*",
+        "nyholm/psr7": "^1.2.1"
+    },
+    "authors": [
+        {
+            "name": "Netresearch DTT GmbH"
+        }
+    ],
+    "extra": {
+        "shopware-plugin-class": "PostDirekt\\Autocomplete\\NRPostDirektAutocomplete",
+        "plugin-icon": "src/Resources/store/icon.png",
+        "copyright": "(c) Deutsche Post Direkt",
+        "label": {
+            "de-DE": "Deutsche Post Direkt Autocomplete",
+            "en-GB": "Deutsche Post Direkt Autocomplete"
+        },
+        "description": {
+            "de-DE": "Deutsche Post Direkt Autocomplete Integration",
+            "en-GB": "Deutsche Post Direkt Autocomplete Integration"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.netresearch.de/",
+            "en-GB": "https://www.netresearch.de/en/"
+        },
+        "supportLink": {
+            "de-DE": "https://support.netresearch.de/support/home",
+            "en-GB": "https://support.netresearch.de/support/home"
+        },
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
