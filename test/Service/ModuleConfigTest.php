@@ -1,7 +1,9 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
 declare(strict_types=1);
 
 namespace PostDirekt\Autocomplete\Test\Service;
@@ -35,11 +37,11 @@ class ModuleConfigTest extends TestCase
 
     public function testGetApiUser(): void
     {
-        static::assertEquals('NRPostDirektAutocomplete.config.apiUser', $this->subject->getApiUser());
+        static::assertEquals('NRLEJPostDirektAutocomplete.config.apiUser', $this->subject->getApiUser());
     }
 
     public function testGetApiPassword(): void
     {
-        static::assertEquals('NRPostDirektAutocomplete.config.apiPassword', $this->subject->getApiPassword());
+        static::assertEquals('NRLEJPostDirektAutocomplete.config.apiPassword', $this->subject->getApiPassword());
     }
 }

@@ -12,7 +12,7 @@ describe('PostdirektAutocompleteCypressTest: Test registration address', () => {
             .then(() => {
                 cy.setLocaleToEnGb();
             });
-        cy.visit('/admin#/sw/plugin/settings/NRPostDirektAutocomplete');
+        cy.visit('/admin#/sw/plugin/settings/NRLEJPostDirektAutocomplete');
         cy.server();
         cy.route({
             url: '/api/v1/_action/system-config/batch',
@@ -22,12 +22,12 @@ describe('PostdirektAutocompleteCypressTest: Test registration address', () => {
         cy.get('.sw-card.sw-system-config__card--0 .sw-card__title').contains('Deutsche Post Direkt');
         cy.get('.sw-card.sw-system-config__card--1').should('be.visible');
         cy.get('.sw-card.sw-system-config__card--1 .sw-card__title').contains('Autocomplete Settings');
-        cy.get('input[name="NRPostDirektAutocomplete.config.active"]').should('be.visible').check();
-        cy.get('input[name="NRPostDirektAutocomplete.config.logging"]').should('be.visible');
-        cy.get('input[name="NRPostDirektAutocomplete.config.apiUser"]').should('be.visible')
+        cy.get('input[name="NRLEJPostDirektAutocomplete.config.active"]').should('be.visible').check();
+        cy.get('input[name="NRLEJPostDirektAutocomplete.config.logging"]').should('be.visible');
+        cy.get('input[name="NRLEJPostDirektAutocomplete.config.apiUser"]').should('be.visible')
             .clear()
             .type(Cypress.env('AUTOCOMPLETE_USER'));
-        cy.get('input[name="NRPostDirektAutocomplete.config.apiPassword"]').should('be.visible')
+        cy.get('input[name="NRLEJPostDirektAutocomplete.config.apiPassword"]').should('be.visible')
             .clear()
             .type(Cypress.env('AUTOCOMPLETE_PASSWORD'));
         cy.get('.sw-plugin-config__save-action').click();
