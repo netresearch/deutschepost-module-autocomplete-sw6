@@ -10,11 +10,6 @@ namespace PostDirekt\Autocomplete\Service;
 
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 
-/**
- * @author Paul Siedler <paul.siedler@netresearch.de>
- *
- * @see https://www.netresearch.de/
- */
 class ModuleConfig
 {
     private const PREFIX = 'NRPostDirektAutocomplete.config.';
@@ -35,22 +30,6 @@ class ModuleConfig
     public function isActive(?string $salesChannelId = null): bool
     {
         return (bool) $this->systemConfig->get(self::PREFIX . 'active', $salesChannelId);
-    }
-
-    /**
-     * Check wether sandbox endpoint is activated
-     */
-    public function isSandboxEnabled(?string $salesChannelId = null): bool
-    {
-        return (bool) $this->systemConfig->get(self::PREFIX . 'sandbox', $salesChannelId);
-    }
-
-    /**
-     * Check wether logging is enabled
-     */
-    public function isLoggingEnabled(?string $salesChannelId = null): bool
-    {
-        return (bool) $this->systemConfig->get(self::PREFIX . 'logging', $salesChannelId);
     }
 
     /**
