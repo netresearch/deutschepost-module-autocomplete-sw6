@@ -1,3 +1,0 @@
-- Quicker and more convenient address input
-- Access to the street directory based on the original postal routing data of Deutsche Post
-- Compatibility to DHL routing code
