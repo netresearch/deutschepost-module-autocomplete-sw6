@@ -30,7 +30,7 @@
                 <directory suffix="Definition.php">./</directory>
                 <directory suffix="Exception.php">./</directory>
 
-                <file>src/NRPostDirektAutocomplete.php</file>
+                <file>src/NRLEJPostDirektAutocomplete.php</file>
             </exclude>
         </whitelist>
     </filter>
