@@ -15,7 +15,7 @@
         </ignoreFiles>
     </projectFiles>
     <issueHandlers>
-        <!-- NRPostDirektAutocomplete does not have property in constructor, however it is referenced due to
+        <!-- NRLEJPostDirektAutocomplete does not have property in constructor, however it is referenced due to
         \Symfony\Component\HttpKernel\Bundle\Bundle -->
         <PropertyNotSetInConstructor>
             <errorLevel type="info">
