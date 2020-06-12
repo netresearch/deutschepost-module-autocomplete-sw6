@@ -12,7 +12,7 @@ use Shopware\Core\System\SystemConfig\SystemConfigService;
 
 class ModuleConfig
 {
-    private const PREFIX = 'NRPostDirektAutocomplete.config.';
+    private const PREFIX = 'NRLEJPostDirektAutocomplete.config.';
 
     /**
      * @var SystemConfigService

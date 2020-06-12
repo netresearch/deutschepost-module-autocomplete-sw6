@@ -6,7 +6,7 @@
         <title>Deutsche Post Direkt</title>
         <component name="infobox">
             <name>infobox</name>
-            <logo>nrpostdirektautocomplete/static/assets/images/deutsche-post-logo.svg</logo>
+            <logo>nrlejpostdirektautocomplete/static/assets/images/deutsche-post-logo.svg</logo>
             <version>1.0.0</version>
             <headerColor>#FFD633</headerColor>
             <bodyColor>#FEFCEE</bodyColor>
