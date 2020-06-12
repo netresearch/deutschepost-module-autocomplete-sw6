@@ -15,6 +15,6 @@ if (!defined('__NR_POSTDIREKT_MANAGED_BY_COMPOSER') && file_exists($autoloadPath
     require_once $autoloadPath;
 }
 
-class NRPostDirektAutocomplete extends Plugin
+class NRLEJPostDirektAutocomplete extends Plugin
 {
 }
