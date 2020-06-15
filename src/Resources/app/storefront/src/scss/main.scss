@@ -1,5 +1,6 @@
 .datalist {
-    position: relative;
+    position: absolute;
+    top: auto !important;
     z-index: 100;
     list-style: none;
     background: white;
