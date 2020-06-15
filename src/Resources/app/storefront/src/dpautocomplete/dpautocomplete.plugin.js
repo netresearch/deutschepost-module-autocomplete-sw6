@@ -12,7 +12,7 @@ export default class DPAutocompletePlugin extends Plugin {
         cityFieldSelector: null,
         postalCodeFieldSelector: null,
         countryFieldSelector: null,
-        deCountryId: null,
+        deCountryId: null
     };
 
     init() {
