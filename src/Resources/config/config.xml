@@ -30,5 +30,8 @@
             <label>API Password</label>
             <label lang="de-DE">API Password</label>
         </input-field>
+        <component name="postdirekt.autocomplete.api-test-button">
+            <name>postdirektAutocompleteApiTestButton</name>
+        </component>
     </card>
 </config>
