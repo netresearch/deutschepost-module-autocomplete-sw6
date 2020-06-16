@@ -1,4 +1,5 @@
 import './postdirekt-autocomplete/components/infobox';
+import './postdirekt-autocomplete/components/api-test-button';
 
 import deDe from '../snippet/de-DE';
 import enGB from '../snippet/en-GB';
