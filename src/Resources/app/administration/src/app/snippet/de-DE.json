@@ -2,7 +2,14 @@
     "postdirekt-autocomplete": {
         "title": "Deutsche Post Direkt Autocomplete",
         "infobox": {
-            "bodyHtml": "<p>Die DATAFACTORY AUTOCOMPLETE von Deutsche Post Direkt bietet wirkungsvolle Unterstützung für die Adresserfassung im Onlinehandel. DATAFACTORY AUTOCOMPLETE wird einfach in Ihren Bestellprozess integriert und die Adresseingabe mit postalischen Daten auf Basis der Original-Postleitdaten der Deutschen Post komfortabel unterstützt. Die Adresseingabe bei der Bestellung wird schneller und komfortabler gestaltet und zugleich Fehler bei der Adresseingabe minimiert. Bereits bei der Eingabe der ersten alphanumerischen Zeichen in das Eingabefeld erhält Ihr Kunde bis zu 15 Vorschläge. Insgesamt stehen mehr als 1,2 Millionen unterschiedliche Adressvorschläge zur Verfügung, darunter alle zustellrelevanten Straßen, mehr als 16.000 Postleitzahlen mit Bestimmungsorten, 14.000 Ortsnamen und 75.000 Ortsteilnamen.</p> <h2>Einfach loslegen:</h2> <p>Sie benötigen einen gültigen Account der Deutsche Post Direkt. Wenn Sie noch keinen gültigen oder aktivierten Account haben, <a href=\"https://www.postdirekt.de/autocomplete\" target=\"_blank\">kontaktieren Sie bitte die Deutsche Post Direkt</a>, um von unseren Adresslösungen zu profitieren.</p>"
+            "bodyHtml": "<p>Die DATAFACTORY AUTOCOMPLETE von Deutsche Post Direkt bietet wirkungsvolle Unterstützung für die Adresserfassung im Onlinehandel. DATAFACTORY AUTOCOMPLETE wird einfach in Ihren Bestellprozess integriert und die Adresseingabe mit postalischen Daten auf Basis der Original-Postleitdaten der Deutschen Post komfortabel unterstützt. Die Adresseingabe bei der Bestellung wird schneller und komfortabler gestaltet und zugleich Fehler bei der Adresseingabe minimiert. Bereits bei der Eingabe der ersten alphanumerischen Zeichen in das Eingabefeld erhält Ihr Kunde bis zu 15 Vorschläge. Insgesamt stehen mehr als 1,2 Millionen unterschiedliche Adressvorschläge zur Verfügung, darunter alle zustellrelevanten Straßen, mehr als 16.000 Postleitzahlen mit Bestimmungsorten, 14.000 Ortsnamen und 75.000 Ortsteilnamen.</p> <h2>Einfach loslegen:</h2> <p>Sie benötigen einen gültigen Account der Deutsche Post Direkt. Wenn Sie noch keinen gültigen oder aktivierten Account haben, <a href=\"https://www.postdirekt.de/autocomplete\" rel=\"noopener\" target=\"_blank\">kontaktieren Sie bitte die Deutsche Post Direkt</a>, um von unseren Adresslösungen zu profitieren.</p>"
+        },
+        "apiTest": {
+            "buttonLabel": "API-Zugriff testen",
+            "successTitle": "API-Test erfolgreich",
+            "successMessage": "Zugangsdaten sind gültig",
+            "errorTitle": "API-Test gescheitert",
+            "errorMessage": "Bitte überprüfen Sie Ihre Zugangsdaten"
         }
     }
 }
