@@ -1,0 +1,7 @@
+Autocomplete service for address input in checkout
+Autocomplete service for address input in the customer account
+available for Shopware 6 input fields Address, City and Zip/Postal code
+Completion of postal data: delivery-relevant streets
+The cursor remains in the address field to be ready for the additional input for house number after initial AUTOCOMPLETE selection
+Simple API configuration via user credentials
+Optional logging configuration in case of troubleshooting
