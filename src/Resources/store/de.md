@@ -13,6 +13,6 @@ Durch die Schnittstelle und Verschlüsselung, haben Sie immer Zugang zu den aktu
 
 Ein zusätzliches Benutzerkonto ist erforderlich und es fallen zusätzliche Gebühren an.
 Das Benutzerkonto wird nicht während der Plugin-Installation erstellt.
-Wenn Sie noch kein Benutzerkonto haben, besuchen Sie bitte die [Anmeldeseite](www.postdirekt.de/autocomplete) und registrieren Sie sich im Portal der Deutschen Post Direkt.
-Für weitere Informationen zu Preispaketen besuchen Sie bitte auch die [Anmeldeseite](www.postdirekt.de/autocomplete).
+Wenn Sie noch kein Benutzerkonto haben, besuchen Sie bitte die [Anmeldeseite: www.postdirekt.de/autocomplete](https://www.postdirekt.de/autocomplete) und registrieren Sie sich im Portal der Deutschen Post Direkt.
+Für weitere Informationen zu Preispaketen besuchen Sie bitte auch die [Anmeldeseite: www.postdirekt.de/autocomplete](https://www.postdirekt.de/autocomplete).
 Die ersten 30 Tage sind kostenlos.
