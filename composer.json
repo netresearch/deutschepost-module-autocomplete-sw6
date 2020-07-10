@@ -39,8 +39,8 @@
             "en-GB": "Deutsche Post Direkt Autocomplete"
         },
         "description": {
-            "de-DE": "Deutsche Post Direkt Autocomplete Integration",
-            "en-GB": "Deutsche Post Direkt Autocomplete Integration"
+            "de-DE": "Der Service DATAFACTORY AUTOCOMPLETE der Deutsche Post Direkt unterstützt die Adresseingabe in Ihrem Shop mit Vorschlägen postalisch korrekter Daten auf Basis der Original-Postleitdaten",
+            "en-GB": "The DATAFACTORY AUTOCOMPLETE service of Deutsche Post Direkt supports the address entry in your shop with suggestions for correct postal data based on the original postal routing data"
         },
         "manufacturerLink": {
             "de-DE": "https://www.netresearch.de/",
