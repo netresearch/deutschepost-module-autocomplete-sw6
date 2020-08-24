@@ -1,0 +1,5 @@
+Autovervollständigung bei Adresseingabe im Checkout
+Autovervollständigung bei Adresseingabe im Kundenkonto
+Verfügbar für die Eingabefelder: Straße, Postleitzahl und Ort
+Der Cursor bleibt im Straßenfeld nach der Auswahl, so dass eine Hausnummer eingegeben werden kann.
+Einfache API Konfiguration via Zugangsdaten (Benutzername & Passwort)
