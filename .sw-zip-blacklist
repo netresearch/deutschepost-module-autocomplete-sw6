@@ -1,5 +1,0 @@
-.gitlab-ci.yml
-src/Resources/app/storefront/test
-**/node_modules
-./test
-./bin
