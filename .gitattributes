@@ -1,0 +1,11 @@
+node_modules export-ignore
+/.gitlab-ci.yml export-ignore
+/src/Resources/app/storefront/test export-ignore
+/bin export-ignore
+/test export-ignore
+/phpstan.neon export-ignore
+/phpstan.neon.dist export-ignore
+/phpunit.xml.dist export-ignore
+/psalm.xml export-ignore
+/.eslintignore export-ignore
+/.gitattributes export-ignore
