@@ -10,8 +10,13 @@ namespace PostDirekt\Autocomplete;
 
 use Shopware\Core\Framework\Plugin;
 
-$autoloadPath = __DIR__ . '/../vendor/autoload.php';
-if (!defined('__NR_POSTDIREKT_MANAGED_BY_COMPOSER') && file_exists($autoloadPath)) {
+if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
+    $autoloadPath = __DIR__ . '/../vendor/autoload.php';
+}
+if (file_exists(__DIR__ . '/../vendor/scoper-autoload.php')) {
+    $autoloadPath = __DIR__ . '/../vendor/scoper-autoload.php';
+}
+if (!defined('__NR_POSTDIREKT_AUTOCOMPLETE_MANAGED_BY_COMPOSER') && isset($autoloadPath)) {
     require_once $autoloadPath;
 }
 
