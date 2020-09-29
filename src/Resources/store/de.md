@@ -16,3 +16,5 @@ Das Benutzerkonto wird nicht während der Plugin-Installation erstellt.
 Wenn Sie noch kein Benutzerkonto haben, besuchen Sie bitte die [Anmeldeseite: www.postdirekt.de/autocomplete](https://www.postdirekt.de/autocomplete) und registrieren Sie sich im Portal der Deutschen Post Direkt.
 Für weitere Informationen zu Preispaketen besuchen Sie bitte auch die [Anmeldeseite: www.postdirekt.de/autocomplete](https://www.postdirekt.de/autocomplete).
 Die ersten 30 Tage sind kostenlos.
+
+Die Deutsche Post Direkt erhält zusätzlich eine Mitteilung, sobald Sie das Plugin herunterladen.
