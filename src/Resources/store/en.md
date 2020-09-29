@@ -14,3 +14,4 @@ The user account is not created during the plugin installation.
 If you do not yet have a user account, please visit the [login page: www.postdirekt.de/autocomplete](https://www.postdirekt.de/autocomplete) and register on the Deutsche Post Direkt portal.
 For more information on price packages, please also visit [www.postdirekt.de/autocomplete](https://www.postdirekt.de/autocomplete).
 The first 30 days are free of charge.
+Deutsche Post Direkt will also receive a message when you download the plugin.
