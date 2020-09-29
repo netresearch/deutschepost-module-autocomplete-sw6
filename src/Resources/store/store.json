@@ -1,8 +1,9 @@
 {
     "storeAvailabilities": [
+        "German",
         "International"
     ],
-    "standardLocale": "en_GB",
+    "standardLocale": "de_DE",
     "localizations": [
         "en_GB",
         "de_DE"
