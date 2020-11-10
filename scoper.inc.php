@@ -77,6 +77,7 @@ return [
         'Symfony\Component\Routing\*',
         'Symfony\Component\EventDispatcher\*',
         'Symfony\Bundle\FrameworkBundle\*',
+        'Psr\Log\LoggerInterface',
     ],
 
     // If `true` then the user defined constants belonging to the global namespace will not be prefixed.
