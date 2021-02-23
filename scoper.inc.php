@@ -73,6 +73,7 @@ return [
         'Shopware\*',
         'PostDirekt\Autocomplete\*',
         'Doctrine\*',
+        'Psr\Log\*',
         'Symfony\Component\HttpFoundation\*',
         'Symfony\Component\Routing\*',
         'Symfony\Component\EventDispatcher\*',
