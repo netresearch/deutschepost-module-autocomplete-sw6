@@ -22,7 +22,7 @@
         "shopware/storefront": "~6.1.0 || ~6.2.0 || ~6.3.0",
         "shopware/core": "~6.1.0 || ~6.2.0 || ~6.3.0",
         "deutschepost/sdk-api-autocomplete-authentication": "^1.0",
-        "php-http/guzzle6-adapter": "*",
+        "php-http/curl-client": "^2.2.0",
         "nyholm/psr7": "^1.2.1"
     },
     "authors": [
