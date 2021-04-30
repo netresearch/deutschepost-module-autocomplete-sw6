@@ -21,23 +21,30 @@ use Shopware\Core\Defaults;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 
 /**
- * Class AuthenticationServiceTest
- *
  * @author   Andreas Müller <andreas.mueller@netresearch.de>
- * @link     https://www.netresearch.de/
+ *
+ * @see     https://www.netresearch.de/
  */
 class AuthenticationServiceTest extends TestCase
 {
-    /** @var ModuleConfig|MockObject */
+    /**
+     * @var ModuleConfig|MockObject
+     */
     private $config;
 
-    /** @var ServiceFactoryInterface|MockObject */
+    /**
+     * @var ServiceFactoryInterface|MockObject
+     */
     private $service;
 
-    /** @var AuthenticationServiceInterface|MockObject */
+    /**
+     * @var AuthenticationServiceInterface|MockObject
+     */
     private $authenticationService;
 
-    /** @var TestLogger */
+    /**
+     * @var TestLogger
+     */
     private $logger;
 
     protected function setUp(): void
@@ -58,7 +65,7 @@ class AuthenticationServiceTest extends TestCase
         $this->service = $this->getMockBuilder(ServiceFactoryInterface::class)
                               ->onlyMethods(['createAuthenticationService'])
                               ->getMock();
-        $this->authenticationService  = $this->getMockBuilder(AuthenticationServiceInterface::class)
+        $this->authenticationService = $this->getMockBuilder(AuthenticationServiceInterface::class)
                                              ->onlyMethods(['authenticate'])
                                              ->getMock();
         parent::setUp();
@@ -72,16 +79,16 @@ class AuthenticationServiceTest extends TestCase
             123456987987
         );
 
-        $this->authenticationService->expects($this->once())
+        $this->authenticationService->expects(static::once())
                                     ->method('authenticate')
                                     ->willReturn($expected);
-        $this->service->expects($this->once())
+        $this->service->expects(static::once())
                       ->method('createAuthenticationService')
                       ->willReturn($this->authenticationService);
         $service = new AuthService($this->config, $this->service, $this->logger);
 
         $token = $service->fetchToken($salesChannelId);
-        self::assertEquals($expected->getAccessToken(), $token);
+        static::assertEquals($expected->getAccessToken(), $token);
     }
 
     public function testFetchTokenFail(): void
@@ -89,10 +96,10 @@ class AuthenticationServiceTest extends TestCase
         $salesChannelId = Defaults::SALES_CHANNEL;
         $exception = new ServiceException('Unable to fetch token');
 
-        $this->authenticationService->expects($this->once())
+        $this->authenticationService->expects(static::once())
                                     ->method('authenticate')
-                                    ->will($this->throwException($exception));
-        $this->service->expects($this->once())
+                                    ->will(static::throwException($exception));
+        $this->service->expects(static::once())
                       ->method('createAuthenticationService')
                       ->willReturn($this->authenticationService);
         $service = new AuthService($this->config, $this->service, $this->logger);
