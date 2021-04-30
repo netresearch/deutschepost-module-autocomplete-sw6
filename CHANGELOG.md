@@ -1,3 +1,7 @@
+# Unreleased
+
+- add compatibility with Shopware 6.4
+
 # 1.1.1
 
 - fixed autoloading issue
