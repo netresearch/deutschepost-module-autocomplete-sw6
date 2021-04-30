@@ -44,6 +44,12 @@
                 <directory name="test"/>
             </errorLevel>
         </PossiblyInvalidArgument>
+        <InvalidArgument>
+            <errorLevel type="info">
+                <!-- Mock objects do not satisfy type requirements of constructors due to compound type -->
+                <file name="test/Service/ModuleConfigTest.php"/>
+            </errorLevel>
+        </InvalidArgument>
 <!-- test/TestBootstrap dynamically includes things, which psalm can not resolve -->
         <UnresolvableInclude errorLevel="info"/>
         <UnusedVariable>
@@ -51,10 +57,5 @@
                 <file name="src/NRLEJPostDirektAutocomplete.php"/>
             </errorLevel>
         </UnusedVariable>
-        <PossiblyInvalidCast>
-            <errorLevel type="info">
-                <file name="src/Service/ModuleConfig.php"/>
-            </errorLevel>
-        </PossiblyInvalidCast>
     </issueHandlers>
 </psalm>

@@ -29,7 +29,7 @@ class ModuleConfig
      */
     public function isActive(?string $salesChannelId = null): bool
     {
-        return (bool) $this->systemConfig->get(self::PREFIX . 'active', $salesChannelId);
+        return $this->systemConfig->getBool(self::PREFIX . 'active', $salesChannelId);
     }
 
     /**
@@ -37,7 +37,7 @@ class ModuleConfig
      */
     public function getApiUser(?string $salesChannelId = null): string
     {
-        return (string) $this->systemConfig->get(self::PREFIX . 'apiUser', $salesChannelId);
+        return $this->systemConfig->getString(self::PREFIX . 'apiUser', $salesChannelId);
     }
 
     /**
@@ -45,6 +45,6 @@ class ModuleConfig
      */
     public function getApiPassword(?string $salesChannelId = null): string
     {
-        return (string) $this->systemConfig->get(self::PREFIX . 'apiPassword', $salesChannelId);
+        return $this->systemConfig->getString(self::PREFIX . 'apiPassword', $salesChannelId);
     }
 }
