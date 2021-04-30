@@ -8,24 +8,27 @@ declare(strict_types=1);
 
 namespace PostDirekt\Autocomplete\Test\Service;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use PostDirekt\Autocomplete\Service\ModuleConfig;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 
 class ModuleConfigTest extends TestCase
 {
-    /** @var ModuleConfig */
+    /**
+     * @var ModuleConfig
+     */
     private $subject;
 
     protected function setUp(): void
     {
+        /* @var MockObject|SystemConfigService $systemConfigMock */
         $systemConfigMock = $this->getMockBuilder(SystemConfigService::class)
                                  ->disableOriginalConstructor()
                                  ->onlyMethods(['get'])
                                  ->getMock();
         $systemConfigMock->method('get')
                          ->willReturnArgument(0);
-        /** @var SystemConfigService $systemConfigMock */
         $this->subject = new ModuleConfig($systemConfigMock);
         parent::setUp();
     }
