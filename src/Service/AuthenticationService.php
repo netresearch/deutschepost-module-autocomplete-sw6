@@ -53,6 +53,7 @@ class AuthenticationService
     {
         $apiUser = $this->config->getApiUser($salesChannelId);
         $apiPassword = $this->config->getApiPassword($salesChannelId);
+
         try {
             $authService = $this->serviceFactory->createAuthenticationService($apiUser, $apiPassword, $this->logger);
             $token = $authService->authenticate();
