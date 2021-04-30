@@ -33,6 +33,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class AddressSubscriber implements EventSubscriberInterface
 {
     public const TOKEN_KEY = 'token';
+    public const PAGE_EXTENSION_KEY = 'postdirekt_autocomplete';
 
     /**
      * @var AuthenticationService
@@ -74,6 +75,7 @@ class AddressSubscriber implements EventSubscriberInterface
             // Deactivated by configuration
             return;
         }
+
         try {
             $token = $this->authService->fetchToken($salesChannelId);
         } catch (\RuntimeException $exception) {
@@ -86,6 +88,6 @@ class AddressSubscriber implements EventSubscriberInterface
 
         /** @var AccountLoginPage|AddressListingPage|CheckoutRegisterPage|AddressDetailPage $page */
         $page = $event->getPage();
-        $page->addExtension('postdirekt_autocomplete', new ArrayEntity([self::TOKEN_KEY => $token]));
+        $page->addExtension(self::PAGE_EXTENSION_KEY, new ArrayEntity([self::TOKEN_KEY => $token]));
     }
 }

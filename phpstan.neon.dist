@@ -5,9 +5,4 @@ parameters:
     symfony:
         constant_hassers: false
         # the placeholder "%ShopwareHashedCacheDir%" will be replaced on execution by bin/phpstan-config-generator.php script
-        container_xml_path: '%rootDir%/../../../../../../..%ShopwareHashedCacheDir%/srcShopware_Development_KernelDevDebugContainer.xml'
-
-    ignoreErrors:
-        -   # PHPStan could not analyse this function
-            message: '#Function getProjectDir not found#'
-            path: test/TestBootstrap.php
+        container_xml_path: '%rootDir%/../../../../..%ShopwareHashedCacheDir%/Shopware_Development_KernelDevDebugContainer.xml'
