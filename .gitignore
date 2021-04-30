@@ -4,3 +4,4 @@ src/Resources/public
 vendor
 .phpunit.result.cache
 phpstan.neon
+./idea
