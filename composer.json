@@ -2,7 +2,7 @@
     "name": "netresearch/postdirekt-autocomplete",
     "description": "Deutsche Post Direkt Autocomplete Integration for Shopware6",
     "type": "shopware-platform-plugin",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -51,9 +51,6 @@
         "supportLink": {
             "de-DE": "https://postdirekt.support.netresearch.de/support/home",
             "en-GB": "https://postdirekt.support.netresearch.de/support/home"
-        },
-        "branch-alias": {
-            "dev-OPSPD-49": "1.2.x-dev"
         }
     }
 }
