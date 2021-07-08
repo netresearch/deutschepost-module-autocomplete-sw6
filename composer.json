@@ -7,15 +7,15 @@
     "autoload": {
         "psr-4": {
             "PostDirekt\\Autocomplete\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "PostDirekt\\Autocomplete\\Test\\": "test/"
         },
         "files": [
             "autoload-dist/PluginIsManagedByComposer.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PostDirekt\\Autocomplete\\Test\\": "test/"
+        }
     },
     "require": {
         "php": "^7.2",
