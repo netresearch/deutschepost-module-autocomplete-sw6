@@ -73,12 +73,12 @@ return [
         'Shopware\*',
         'PostDirekt\Autocomplete\*',
         'Doctrine\*',
-        'Psr\Log\*',
+        'Psr\*',
         'Symfony\Component\HttpFoundation\*',
         'Symfony\Component\Routing\*',
         'Symfony\Component\EventDispatcher\*',
+        'Symfony\Component\OptionsResolver\*',
         'Symfony\Bundle\FrameworkBundle\*',
-        'Psr\Log\LoggerInterface',
     ],
 
     // If `true` then the user defined constants belonging to the global namespace will not be prefixed.
