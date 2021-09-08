@@ -47,4 +47,20 @@ class ModuleConfig
     {
         return $this->systemConfig->getString(self::PREFIX . 'apiPassword', $salesChannelId);
     }
+
+    /**
+     * Check house number hint is activated
+     */
+    public function isHouseNumberHintActive(?string $salesChannelId = null): bool
+    {
+        return $this->systemConfig->getBool(self::PREFIX . 'activeHousenumberHint', $salesChannelId);
+    }
+
+    /**
+     * Fetch house number hint text
+     */
+    public function getHouseNumberHint(?string $salesChannelId = null): string
+    {
+        return $this->systemConfig->getString(self::PREFIX . 'housenumberHint', $salesChannelId);
+    }
 }
