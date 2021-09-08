@@ -8,6 +8,7 @@ import autocomplete from '@netresearch/postdirekt-autocomplete-library';
 export default class DPAutocompletePlugin extends Plugin {
     options = {
         token: null,
+        hint: null,
         streetFieldSelector: null,
         cityFieldSelector: null,
         postalCodeFieldSelector: null,
@@ -26,7 +27,8 @@ export default class DPAutocompletePlugin extends Plugin {
             postalCodeInput,
             countryInput,
             this.options.deCountryId,
-            this.options.token
+            this.options.token,
+            this.options.hint
         );
     }
 
