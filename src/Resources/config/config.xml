@@ -30,8 +30,23 @@
             <label>API Password</label>
             <label lang="de-DE">API Password</label>
         </input-field>
+
         <component name="postdirekt.autocomplete.api-test-button">
             <name>postdirektAutocompleteApiTestButton</name>
         </component>
+    </card>
+    <card>
+        <title>House number hint</title>
+        <title lang="de-DE">Hausnummern Hinweis</title>
+        <input-field type="bool">
+            <name>activeHousenumberHint</name>
+            <label>Active</label>
+            <label lang="de-DE">Aktiviert</label>
+        </input-field>
+        <input-field>
+            <name>housenumberHint</name>
+            <label>House number hint text</label>
+            <label lang="de-DE">Hausnummern Hinweistext</label>
+        </input-field>
     </card>
 </config>
