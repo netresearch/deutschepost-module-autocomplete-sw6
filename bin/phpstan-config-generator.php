@@ -11,7 +11,7 @@ $classLoader = require __DIR__ . '/../../../../vendor/autoload.php';
 $shopwareVersion = InstalledVersions::getVersion('shopware/platform');
 
 $pluginRootPath = \dirname(__DIR__);
-$composerJson = \json_decode((string) \file_get_contents($pluginRootPath . '/composer.json'), true);
+$composerJson = json_decode((string) file_get_contents($pluginRootPath . '/composer.json'), true);
 
 $nrlejAutocomplete = [
     'autoload' => $composerJson['autoload'],
@@ -29,15 +29,15 @@ $kernel->boot();
 $projectDir = $kernel->getProjectDir();
 $cacheDir = $kernel->getCacheDir();
 
-$relativeCacheDir = \str_replace($projectDir, '', $cacheDir);
+$relativeCacheDir = str_replace($projectDir, '', $cacheDir);
 
-$phpStanConfigDist = \file_get_contents(__DIR__ . '/../phpstan.neon.dist');
+$phpStanConfigDist = file_get_contents(__DIR__ . '/../phpstan.neon.dist');
 if ($phpStanConfigDist === false) {
     throw new RuntimeException('phpstan.neon.dist file not found');
 }
 
 // because the cache dir is hashed by Shopware, we need to set the PHPStan config dynamically
-$phpStanConfig = \str_replace(
+$phpStanConfig = str_replace(
     [
         "\n        # the placeholder \"%ShopwareHashedCacheDir%\" will be replaced on execution by bin/phpstan-config-generator.php script",
         '%ShopwareHashedCacheDir%',
@@ -49,4 +49,4 @@ $phpStanConfig = \str_replace(
     $phpStanConfigDist
 );
 
-\file_put_contents(__DIR__ . '/../phpstan.neon', $phpStanConfig);
+file_put_contents(__DIR__ . '/../phpstan.neon', $phpStanConfig);

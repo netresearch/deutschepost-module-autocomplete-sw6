@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/7.1/phpunit.xsd"
-         bootstrap="test/TestBootstrap.php"
->
-
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+         bootstrap="test/TestBootstrap.php">
+    <coverage>
+        <include>
+            <directory suffix=".php">./</directory>
+        </include>
+        <exclude>
+            <directory suffix=".php">./test</directory>
+            <directory suffix=".php">./vendor</directory>
+            <directory suffix=".php">./src/Migration</directory>
+            <directory suffix="Definition.php">./</directory>
+            <directory suffix="Exception.php">./</directory>
+            <file>src/NRLEJPostDirektAutocomplete.php</file>
+        </exclude>
+    </coverage>
     <php>
         <ini name="error_reporting" value="-1"/>
         <server name="KERNEL_CLASS" value="Shopware\Development\Kernel"/>
@@ -14,28 +24,11 @@
         <env name="SHELL_VERBOSITY" value="-1"/>
         <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak"/>
     </php>
-
     <testsuites>
         <testsuite name="Deutsche Post Direkt Autocomplete Testsuite">
             <directory>test</directory>
         </testsuite>
     </testsuites>
-
-    <filter>
-        <whitelist>
-            <directory suffix=".php">./</directory>
-            <exclude>
-                <directory suffix=".php">./test</directory>
-                <directory suffix=".php">./vendor</directory>
-                <directory suffix=".php">./src/Migration</directory>
-                <directory suffix="Definition.php">./</directory>
-                <directory suffix="Exception.php">./</directory>
-
-                <file>src/NRLEJPostDirektAutocomplete.php</file>
-            </exclude>
-        </whitelist>
-    </filter>
-
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener">
             <arguments>
