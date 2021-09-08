@@ -34,6 +34,7 @@ class AddressSubscriber implements EventSubscriberInterface
 {
     public const TOKEN_KEY = 'token';
     public const PAGE_EXTENSION_KEY = 'postdirekt_autocomplete';
+    public const HINT = 'hint';
 
     /**
      * @var AuthenticationService
@@ -85,9 +86,24 @@ class AddressSubscriber implements EventSubscriberInterface
              */
             return;
         }
+        $hint = $this->getHouseNumberHint($salesChannelId);
 
         /** @var AccountLoginPage|AddressListingPage|CheckoutRegisterPage|AddressDetailPage $page */
         $page = $event->getPage();
-        $page->addExtension(self::PAGE_EXTENSION_KEY, new ArrayEntity([self::TOKEN_KEY => $token]));
+        $page->addExtension(
+            self::PAGE_EXTENSION_KEY,
+            new ArrayEntity(
+                [self::TOKEN_KEY => $token, self::HINT => $hint]
+            )
+        );
+    }
+
+    private function getHouseNumberHint(string $salesChannelId): ?string
+    {
+        if (!$this->moduleConfig->isHouseNumberHintActive($salesChannelId)) {
+            return null;
+        }
+
+        return $this->moduleConfig->getHouseNumberHint($salesChannelId);
     }
 }

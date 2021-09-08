@@ -43,7 +43,7 @@ class AddressSubscriberTest extends TestCase
     {
         $this->moduleConfig = $this->getMockBuilder(ModuleConfig::class)
             ->disableOriginalConstructor()
-            ->onlyMethods(['isActive', 'getApiUser', 'getApiPassword'])
+            ->onlyMethods(['isActive', 'getApiUser', 'getApiPassword', 'isHouseNumberHintActive', 'getHouseNumberHint'])
             ->getMock();
         $this->authService = $this->getMockBuilder(AuthenticationService::class)
             ->disableOriginalConstructor()
@@ -57,6 +57,10 @@ class AddressSubscriberTest extends TestCase
         $accessToken = Uuid::regexify('[A-Za-z0-9]{20}');
         $this->moduleConfig->expects(static::once())
             ->method('isActive')
+            ->willReturn(true);
+
+        $this->moduleConfig->expects(static::once())
+            ->method('isHouseNumberHintActive')
             ->willReturn(true);
 
         $this->authService->expects(static::once())
