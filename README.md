@@ -69,6 +69,8 @@ Then, continue as described in [From Packagist](#from-packagist).
 * Select **'…'** in the "Deutsche Post Direkt Autocomplete" row and select **"Config"**
 * Check **"Active"**
 * Enter your credentials in the **"API User"** and **"API Password"** fields
+* Check **"Active"** in "House number hint" if the hint should be active
+* Enter the text in **"House number hint text"** which will be shown as infobox on the street address field on address suggestion selection.
 
 ## Author
 
