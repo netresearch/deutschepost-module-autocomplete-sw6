@@ -42,6 +42,7 @@ return [
     'files-whitelist' => [
         'autoload-dist/PluginIsManagedByComposer.php',
         'src/NRLEJPostDirektAutocomplete.php',
+        'vendor/composer/*',
     ],
 
     // When scoping PHP files, there will be scenarios where some of the code being scoped indirectly references the
@@ -79,6 +80,7 @@ return [
         'Symfony\Component\EventDispatcher\*',
         'Symfony\Component\OptionsResolver\*',
         'Symfony\Bundle\FrameworkBundle\*',
+        'NULL',
     ],
 
     // If `true` then the user defined constants belonging to the global namespace will not be prefixed.
