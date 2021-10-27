@@ -1,3 +1,7 @@
+# 1.3.1
+
+- fix autoloading issues with composer 2
+
 # 1.3.0
 
 - add PHP 8 compatibility
