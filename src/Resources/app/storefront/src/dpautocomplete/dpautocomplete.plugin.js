@@ -5,6 +5,9 @@
 import Plugin from 'src/plugin-system/plugin.class';
 import autocomplete from '@netresearch/postdirekt-autocomplete-library';
 
+let listenerMap = {};
+const hashCode = s => s.split('').reduce((a, b) => (((a << 5) - a) + b.charCodeAt(0)) | 0, 0);
+
 export default class DPAutocompletePlugin extends Plugin {
     options = {
         token: null,
@@ -17,6 +20,17 @@ export default class DPAutocompletePlugin extends Plugin {
     };
 
     init() {
+        const hash = hashCode(
+            this.options.streetFieldSelector
+            + this.options.cityFieldSelector
+            + this.options.postalCodeFieldSelector
+            + this.options.countryFieldSelector
+            + ""
+        );
+        // prevent registering the autocomplete functionality multiple times on the same form fields
+        if (listenerMap[hash] !== undefined) {
+            return;
+        }
         const streetInput = document.querySelector(this.options.streetFieldSelector);
         const cityInput = document.querySelector(this.options.cityFieldSelector);
         const postalCodeInput = document.querySelector(this.options.postalCodeFieldSelector);
@@ -30,6 +44,7 @@ export default class DPAutocompletePlugin extends Plugin {
             this.options.token,
             this.options.hint
         );
+        listenerMap[hash] = hash;
     }
 
 }
