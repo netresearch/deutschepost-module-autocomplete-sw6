@@ -17,8 +17,8 @@ use PostDirekt\Sdk\Autocomplete\Authentication\Api\ServiceFactoryInterface;
 use PostDirekt\Sdk\Autocomplete\Authentication\Exception\ServiceException;
 use PostDirekt\Sdk\Autocomplete\Authentication\Model\Token;
 use Psr\Log\Test\TestLogger;
-use Shopware\Core\Defaults;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
+use Shopware\Core\Test\TestDefaults;
 
 /**
  * @author   Andreas Müller <andreas.mueller@netresearch.de>
@@ -66,14 +66,14 @@ class AuthenticationServiceTest extends TestCase
                               ->onlyMethods(['createAuthenticationService'])
                               ->getMock();
         $this->authenticationService = $this->getMockBuilder(AuthenticationServiceInterface::class)
-                                             ->onlyMethods(['authenticate'])
-                                             ->getMock();
+                                            ->onlyMethods(['authenticate'])
+                                            ->getMock();
         parent::setUp();
     }
 
     public function testFetchToken(): void
     {
-        $salesChannelId = Defaults::SALES_CHANNEL;
+        $salesChannelId = TestDefaults::SALES_CHANNEL;
         $expected = new Token(
             'abcdefghijklmnopq',
             123456987987
@@ -93,7 +93,7 @@ class AuthenticationServiceTest extends TestCase
 
     public function testFetchTokenFail(): void
     {
-        $salesChannelId = Defaults::SALES_CHANNEL;
+        $salesChannelId = TestDefaults::SALES_CHANNEL;
         $exception = new ServiceException('Unable to fetch token');
 
         $this->authenticationService->expects(static::once())
