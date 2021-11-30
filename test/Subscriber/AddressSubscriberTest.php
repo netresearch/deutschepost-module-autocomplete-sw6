@@ -43,7 +43,7 @@ class AddressSubscriberTest extends TestCase
     {
         $this->moduleConfig = $this->getMockBuilder(ModuleConfig::class)
             ->disableOriginalConstructor()
-            ->onlyMethods(['isActive', 'getApiUser', 'getApiPassword', 'isHouseNumberHintActive', 'getHouseNumberHint'])
+            ->onlyMethods(['isActive', 'getApiUser', 'getApiPassword', 'isHouseNumberHintActive'])
             ->getMock();
         $this->authService = $this->getMockBuilder(AuthenticationService::class)
             ->disableOriginalConstructor()
