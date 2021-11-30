@@ -86,7 +86,7 @@ class AddressSubscriber implements EventSubscriberInterface
              */
             return;
         }
-        $hint = $this->getHouseNumberHint($salesChannelId);
+        $hint = $this->moduleConfig->isHouseNumberHintActive($salesChannelId) ?: null;
 
         /** @var AccountLoginPage|AddressListingPage|CheckoutRegisterPage|AddressDetailPage $page */
         $page = $event->getPage();
@@ -96,14 +96,5 @@ class AddressSubscriber implements EventSubscriberInterface
                 [self::TOKEN_KEY => $token, self::HINT => $hint]
             )
         );
-    }
-
-    private function getHouseNumberHint(string $salesChannelId): ?string
-    {
-        if (!$this->moduleConfig->isHouseNumberHintActive($salesChannelId)) {
-            return null;
-        }
-
-        return $this->moduleConfig->getHouseNumberHint($salesChannelId);
     }
 }
