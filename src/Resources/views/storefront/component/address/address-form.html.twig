@@ -3,11 +3,12 @@
 {% block component_address_form_address_fields %}
     {{ parent() }}
     {% if page.extensions('postdirekt_autocomplete') %}
+        {% set hint = page.extensions.postdirekt_autocomplete.get('hint') ? 'postdirekt.autocomplete.housenumber_hint'|trans : null %}
         <template
             data-autocomplete-plugin
             data-autocomplete-plugin-options='{
             "token": "{{ page.extensions.postdirekt_autocomplete.get('token') }}",
-            "hint": "{{ page.extensions.postdirekt_autocomplete.get('hint') }}",
+            "hint": "{{ hint }}",
             "streetFieldSelector": "#{{ prefix }}AddressStreet",
             "postalCodeFieldSelector": "#{{ prefix }}AddressZipcode",
             "cityFieldSelector": "#{{ prefix }}AddressCity",
