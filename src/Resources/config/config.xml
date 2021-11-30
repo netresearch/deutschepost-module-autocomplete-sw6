@@ -43,10 +43,9 @@
             <label>Active</label>
             <label lang="de-DE">Aktiviert</label>
         </input-field>
-        <input-field>
-            <name>housenumberHint</name>
-            <label>House number hint text</label>
-            <label lang="de-DE">Hausnummern Hinweistext</label>
-        </input-field>
+        <component name="housenumberinfo">
+            <name>housenumberinfo</name>
+            <bodyColor>#FEFCEE</bodyColor>
+        </component>
     </card>
 </config>
