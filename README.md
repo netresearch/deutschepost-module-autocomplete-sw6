@@ -70,7 +70,7 @@ Then, continue as described in [From Packagist](#from-packagist).
 * Check **"Active"**
 * Enter your credentials in the **"API User"** and **"API Password"** fields
 * Check **"Active"** in "House number hint" if the hint should be active
-* Enter the text in **"House number hint text"** which will be shown as infobox on the street address field on address suggestion selection.
+* Navigate to `Administration > Settings > Snippets` to maintain **postdirekt.autocomplete.housenumber_hint** snippet 
 
 ## Author
 

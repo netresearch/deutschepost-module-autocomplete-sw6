@@ -10,6 +10,9 @@
             "successMessage": "Zugangsdaten sind gültig",
             "errorTitle": "API-Test gescheitert",
             "errorMessage": "Bitte überprüfen Sie Ihre Zugangsdaten"
+        },
+        "housenumber_info": {
+            "bodyHtml" : "<h2>Hinweis:</h2><p>Der Hinweistext kann über die Übersetzungen der <a href=\"#/sw/settings/snippet/index\">Textbausteine</a> für die jeweilige Sprache gepflegt werden. <br>  Textbaustein-Name: <b>postdirekt.autocomplete.housenumber_hint</b> </p>"
         }
     }
 }

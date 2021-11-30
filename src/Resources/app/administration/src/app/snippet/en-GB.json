@@ -10,6 +10,9 @@
             "successMessage": "Credentials are valid",
             "errorTitle": "API Test Failed",
             "errorMessage": "Please check your credentials"
+        },
+        "housenumber_info": {
+            "bodyHtml" : "<h2>Notice:</h2><p>The hint text can be maintained in <a href=\"#/sw/settings/snippet/index\">Snippets</a> for the respective language. <br>  Snippet name: <b>postdirekt.autocomplete.housenumber_hint</b> </p>"
         }
     }
 }
