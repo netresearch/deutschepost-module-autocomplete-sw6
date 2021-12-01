@@ -8,6 +8,6 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@netresearch/postdirekt-autocomplete-library": "^1.2.0"
+        "@netresearch/postdirekt-autocomplete-library": "^1.2.1"
     }
 }

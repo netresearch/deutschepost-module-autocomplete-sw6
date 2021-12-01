@@ -1,3 +1,8 @@
+# 1.3.2
+
+- change house number hint text from configurable to translatable
+- update autocomplete lib dependency
+
 # 1.3.1
 
 - fix autoloading issues with composer 2
