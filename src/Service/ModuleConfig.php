@@ -55,12 +55,4 @@ class ModuleConfig
     {
         return $this->systemConfig->getBool(self::PREFIX . 'activeHousenumberHint', $salesChannelId);
     }
-
-    /**
-     * Fetch house number hint text
-     */
-    public function getHouseNumberHint(?string $salesChannelId = null): string
-    {
-        return $this->systemConfig->getString(self::PREFIX . 'housenumberHint', $salesChannelId);
-    }
 }

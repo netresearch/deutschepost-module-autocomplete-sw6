@@ -7,7 +7,7 @@
         <component name="infobox">
             <name>infobox</name>
             <logo>nrlejpostdirektautocomplete/static/assets/images/deutsche-post-logo.svg</logo>
-            <version>1.3.0</version>
+            <version>1.3.2</version>
             <headerColor>#FFD633</headerColor>
             <bodyColor>#FEFCEE</bodyColor>
         </component>
@@ -43,10 +43,9 @@
             <label>Active</label>
             <label lang="de-DE">Aktiviert</label>
         </input-field>
-        <input-field>
-            <name>housenumberHint</name>
-            <label>House number hint text</label>
-            <label lang="de-DE">Hausnummern Hinweistext</label>
-        </input-field>
+        <component name="housenumberinfo">
+            <name>housenumberinfo</name>
+            <bodyColor>#FEFCEE</bodyColor>
+        </component>
     </card>
 </config>
