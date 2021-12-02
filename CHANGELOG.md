@@ -1,7 +1,7 @@
 # 1.3.2
 
 - change house number hint text from configurable to translatable
-- update autocomplete lib dependency
+- update autocomplete lib dependency to 1.2.1, contains bugfix for Safari - input looses focus on autocompletion
 
 # 1.3.1
 
