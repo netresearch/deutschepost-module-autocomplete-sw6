@@ -40,7 +40,6 @@ return [
     // a file untouched.
     // Paths are relative to the configuration file unless if they are already absolute
     'files-whitelist' => [
-        'autoload-dist/PluginIsManagedByComposer.php',
         'src/NRLEJPostDirektAutocomplete.php',
         'vendor/composer/*',
     ],
