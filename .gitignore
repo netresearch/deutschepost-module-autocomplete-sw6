@@ -1,7 +1,8 @@
 src/Resources/app/storefront/dist
 **/node_modules
 src/Resources/public
-vendor
+**/vendor
 .phpunit.result.cache
 phpstan.neon
 ./idea
+composer.lock
