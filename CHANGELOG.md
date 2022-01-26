@@ -1,3 +1,8 @@
+# 1.3.3
+
+- fix another autoloading issue with fully packaged versions
+- update autocomplete lib dependency to 1.2.2, prevent browser autocompleten on fields managed by this plugin
+
 # 1.3.2
 
 - change house number hint text from configurable to translatable
