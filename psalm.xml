@@ -26,36 +26,48 @@
                 <directory name="test"/>
             </errorLevel>
         </PropertyNotSetInConstructor>
+        <InternalClass>
+            <errorLevel type="suppress">
+                <!-- Test classes with defaults are internal -->
+                <directory name="test"/>
+            </errorLevel>
+        </InternalClass>
         <InternalMethod>
-            <errorLevel type="info">
+            <errorLevel type="suppress">
                 <!-- For some reason psalm thinks some PHPUnit mock manipulation methods are internal -->
                 <directory name="test"/>
             </errorLevel>
         </InternalMethod>
         <PossiblyUndefinedMethod>
             <errorLevel type="info">
-<!-- Mock object methods are not properly recognized due to compound type -->
+                <!-- Mock object methods are not properly recognized due to compound type -->
                 <directory name="test"/>
             </errorLevel>
         </PossiblyUndefinedMethod>
         <PossiblyInvalidArgument>
-            <errorLevel type="info">
-<!-- Mock objects do not satisfy type requirements of constructors due to compound type -->
+            <errorLevel type="suppress">
+                <!-- Mock objects do not satisfy type requirements of constructors due to compound type -->
                 <directory name="test"/>
             </errorLevel>
         </PossiblyInvalidArgument>
         <InvalidArgument>
-            <errorLevel type="info">
+            <errorLevel type="suppress">
                 <!-- Mock objects do not satisfy type requirements of constructors due to compound type -->
                 <file name="test/Service/ModuleConfigTest.php"/>
             </errorLevel>
         </InvalidArgument>
-<!-- test/TestBootstrap dynamically includes things, which psalm can not resolve -->
+        <!-- test/TestBootstrap dynamically includes things, which psalm can not resolve -->
         <UnresolvableInclude errorLevel="info"/>
         <UnusedVariable>
             <errorLevel type="info">
                 <file name="src/NRLEJPostDirektAutocomplete.php"/>
             </errorLevel>
         </UnusedVariable>
+        <DeprecatedMethod>
+            <!-- deprecation notice does not affect our usage -->
+            <errorLevel type="suppress">
+                <file name="src/Subscriber/AddressSubscriber.php"/>
+            </errorLevel>
+        </DeprecatedMethod>
     </issueHandlers>
 </psalm>
