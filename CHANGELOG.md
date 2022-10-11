@@ -1,3 +1,7 @@
+# 1.3.4
+
+- fix autocomplete functionality for editing and creating address on checkout confirmation step
+
 # 1.3.3
 
 - fix another autoloading issue with fully packaged versions
