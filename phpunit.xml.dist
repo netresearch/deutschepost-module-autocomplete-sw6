@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
-         bootstrap="test/TestBootstrap.php">
+         backupGlobals="false"
+         colors="true"
+         bootstrap="test/TestBootstrap.php"
+         cacheResult="false">
     <coverage>
         <include>
             <directory suffix=".php">./</directory>
@@ -17,8 +20,8 @@
     </coverage>
     <php>
         <ini name="error_reporting" value="-1"/>
-        <server name="KERNEL_CLASS" value="Shopware\Development\Kernel"/>
-        <env name="APP_ENV" value="test"/>
+        <server name="APP_ENV" value="test" force="true"/>
+        <server name="KERNEL_CLASS" value="\Shopware\Core\Framework\Test\TestKernel" />
         <env name="APP_DEBUG" value="1"/>
         <env name="APP_SECRET" value="s$cretf0rt3st"/>
         <env name="SHELL_VERBOSITY" value="-1"/>
@@ -29,20 +32,4 @@
             <directory>test</directory>
         </testsuite>
     </testsuites>
-    <listeners>
-        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener">
-            <arguments>
-                <array>
-                    <!-- set this option to 0 to disable the DebugClassLoader integration -->
-                    <element key="debug-class-loader">
-                        <integer>0</integer>
-                    </element>
-                </array>
-            </arguments>
-        </listener>
-        <!--Enable to see the db sideeffects of the tests. -->
-        <!--<listener class="Shopware\Core\Framework\Test\TestCaseBase\DatabaseCleanTestListener"/>-->
-        <!--Enable to see Test structure violations. (Not formatted) -->
-        <!--<listener class="Shopware\Core\Framework\Test\TestCaseBase\TestValidityListener"/>-->
-    </listeners>
 </phpunit>

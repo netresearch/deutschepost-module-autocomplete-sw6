@@ -32,26 +32,12 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class AddressSubscriber implements EventSubscriberInterface
 {
-    public const TOKEN_KEY = 'token';
-    public const PAGE_EXTENSION_KEY = 'postdirekt_autocomplete';
-    public const HINT = 'hint';
+    final public const TOKEN_KEY = 'token';
+    final public const PAGE_EXTENSION_KEY = 'postdirekt_autocomplete';
+    final public const HINT = 'hint';
 
-    /**
-     * @var AuthenticationService
-     */
-    private $authService;
-
-    /**
-     * @var ModuleConfig
-     */
-    private $moduleConfig;
-
-    public function __construct(
-        AuthenticationService $authService,
-        ModuleConfig $moduleConfig
-    ) {
-        $this->authService = $authService;
-        $this->moduleConfig = $moduleConfig;
+    public function __construct(private readonly AuthenticationService $authService, private readonly ModuleConfig $moduleConfig)
+    {
     }
 
     public static function getSubscribedEvents(): array
@@ -66,10 +52,8 @@ class AddressSubscriber implements EventSubscriberInterface
 
     /**
      * When page is loaded, fetch API token and pass it into the page context for templates to use
-     *
-     * @param AccountLoginPageLoadedEvent|AddressListingPageLoadedEvent|CheckoutRegisterPageLoadedEvent|AddressDetailPageLoadedEvent|PageLoadedEvent $event
      */
-    public function onAddressPagesLoaded(PageLoadedEvent $event): void
+    public function onAddressPagesLoaded(AccountLoginPageLoadedEvent|AddressListingPageLoadedEvent|CheckoutRegisterPageLoadedEvent|AddressDetailPageLoadedEvent|PageLoadedEvent $event): void
     {
         $salesChannelId = $event->getSalesChannelContext()->getSalesChannel()->getId();
         if (!$this->moduleConfig->isActive($salesChannelId)) {
@@ -79,7 +63,7 @@ class AddressSubscriber implements EventSubscriberInterface
 
         try {
             $token = $this->authService->fetchToken($salesChannelId);
-        } catch (\RuntimeException $exception) {
+        } catch (\RuntimeException) {
             /*
              * Logging is already done in SDK, we will just early return here to avoid rendering of
              * our element in the templates
