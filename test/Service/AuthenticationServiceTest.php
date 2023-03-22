@@ -68,7 +68,6 @@ class AuthenticationServiceTest extends TestCase
         $this->authenticationService = $this->getMockBuilder(AuthenticationServiceInterface::class)
                                             ->onlyMethods(['authenticate'])
                                             ->getMock();
-        parent::setUp();
     }
 
     public function testFetchToken(): void

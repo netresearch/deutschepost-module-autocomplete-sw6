@@ -2,7 +2,7 @@
  * See LICENSE.md for license details.
  */
 
-import Plugin from 'src/plugin-system/plugin.class';
+import Plugin from 'shopware-storefront-sdk/plugin-system/plugin.class';
 import autocomplete from '@netresearch/postdirekt-autocomplete-library';
 
 let listenerMap = {};
