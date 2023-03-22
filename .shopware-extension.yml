@@ -1,0 +1,161 @@
+store:
+    availabilities:
+        - German
+        - International
+    default_locale: de_DE
+    localizations:
+        - de_DE
+        - en_GB
+    categories:
+        - Bestellprozess
+        - ConversionOptimierung
+    type: extension
+    icon: src/Resources/store/icon.png
+    automatic_bugfix_version_compatibility: true
+    description:
+        de: |
+            <p><strong>DATAFACTORY AUTOCOMPLETE</strong> von Deutsche Post Direkt, einer auf Adress- und Datamanagement spezialisierte 100% Tochter von Deutsche Post DHL Group.
+            Es bietet wirkungsvolle Unterstützung für die Adresserfassung.</p>
+            <p>Durch das Shopware 6-Plugin wird DATAFACTORY AUTOCOMPLETE einfach in Ihren Bestellprozess im Check-out integriert und die Adresseingabe mit postalischen Daten auf Basis der Original-Postleitdaten der Deutschen Post komfortabel unterstützt.</p>
+            <p>Bereits bei der Eingabe der ersten alphanumerischen Zeichen in das Eingabefeld erhält Ihr Kunde bis zu 15 Vorschläge.
+            Insgesamt stehen mehr als 1,2 Millionen unterschiedliche Adressvorschläge zur Verfügung, darunter alle zustellrelevanten Straßen, mehr als 16.000 Postleitzahlen mit Bestimmungsorten, 14.000 Ortsnamen und 75.000 Ortsteil-namen sowie 7.000 Postfilialen.</p>
+            <p>Die Vorschläge basieren auf den Original Postleitdaten der Deutschen Post.
+            Durch die Schnittstelle und Verschlüsselung, haben Sie immer Zugang zu den aktuellsten Daten – schnell und sicher.</p>
+            <h2>Konto &amp; Preisgestaltung</h2>
+            <p>Ein zusätzliches Benutzerkonto ist erforderlich und es fallen zusätzliche Gebühren an.
+            Das Benutzerkonto wird nicht während der Plugin-Installation erstellt.
+            Wenn Sie noch kein Benutzerkonto haben, besuchen Sie bitte die <a rel="noopener noreferrer" target="_blank" href="https://www.postdirekt.de/autocomplete">Anmeldeseite: www.postdirekt.de/autocomplete</a> und registrieren Sie sich im Portal der Deutschen Post Direkt.
+            Für weitere Informationen zu Preispaketen besuchen Sie bitte auch die <a rel="noopener noreferrer" target="_blank" href="https://www.postdirekt.de/autocomplete">Anmeldeseite: www.postdirekt.de/autocomplete</a>.
+            Die ersten 30 Tage sind kostenlos.</p>
+            <p>Die Deutsche Post Direkt erhält zusätzlich eine Mitteilung, sobald Sie das Plugin herunterladen.</p>
+        en: |
+            <p><strong>DATAFACTORY Autocomplete</strong> is a service of Deutsche Post Direkt, 100 % subsidiary of the world’s leading mail and logistics company Deutsche Post DHL Group, specialized in address and data management.
+            The service offers effective assistance with incomplete address data.</p>
+            <p>This module integrates DATAFACTORY Autocomplete services into Shopware 6 so that your customers can now supplement their postal data easily.
+            As soon as your customers enter the first alphanumerical characters in an address input field, they will receive up to 15 suggestions for valid German addresses.
+            A total of around 1.2 million different address suggestions are available, including all delivery-relevant streets, more than 16,000 postal--config $CI_PROJECT_DIR/.shopware-extension.ymlcodes and destinations, 14,000 towns/cities, 75,000 district names.
+            The basis for automatic completion is the street directory based on the original postal routing data of the Deutsche Post.
+            Through interface connection and encryption, you can always access up-to-date postal data quickly and securely.</p>
+            <h2>Account &amp; Pricing</h2>
+            <p>An additional user account is required and additional fees will apply.
+            The user account is not created during the plugin installation.
+            If you do not yet have a user account, please visit the <a rel="noopener noreferrer" target="_blank" href="https://www.postdirekt.de/autocomplete">login page: www.postdirekt.de/autocomplete</a> and register on the Deutsche Post Direkt portal.
+            For more information on price packages, please also visit <a rel="noopener noreferrer" target="_blank" href="https://www.postdirekt.de/autocomplete">www.postdirekt.de/autocomplete</a>.
+            The first 30 days are free of charge.
+            Deutsche Post Direkt will also receive a message when you download the plugin.</p>
+    installation_manual:
+        de: |
+            <p>Extrahieren Sie das NRLEJPostDirektAutocomplete Verzeichnis aus der .zip-Datei in Ihr custom/plugins Verzeichnis.
+            Danach installieren und aktivieren Sie das Plugin mit dem folgenden Befehl:</p>
+            <p><strong>bin/console plugin:install --activate --clearCache NRLEJPostDirektAutocomplete</strong></p>
+        en: |
+            <p>Extract the NRLEJPostDirektAutocomplete directory from the .zip file into your custom/plugins directory.
+            Then, install and activate the plugin:</p>
+            <p><strong>bin/console plugin:install --activate --clearCache NRLEJPostDirektAutocomplete</strong></p>
+    tags:
+        de:
+            - adresse
+        en:
+            - address
+    videos:
+        de: []
+        en: []
+    highlights:
+        de:
+            - Mehr Benutzerfreundlichkeit durch schnelle und komfortable Adresseingabe
+            - Reduzierung von Retouren durch postalisch korrekte Daten
+            - Zugriff auf das Straßenverzeichnis auf Basis der originalen Postleitzahlen der Deutschen Post
+            - Kaufentscheidung ohne Risiko durch 30-Tage-Gratistest
+        en:
+            - Quicker and more convenient address input
+            - Access to the street directory based on the original postal routing data of Deutsche Post
+            - Compatibility to DHL routing code
+    features:
+        de:
+            - Autovervollständigung bei Adresseingabe im Checkout
+            - Autovervollständigung bei Adresseingabe im Kundenkonto
+            - 'Verfügbar für die Eingabefelder: Straße, Postleitzahl und Ort'
+            - Der Cursor bleibt im Straßenfeld nach der Auswahl, so dass eine Hausnummer eingegeben werden kann.
+            - Einfache API Konfiguration via Zugangsdaten (Benutzername & Passwort)
+        en:
+            - Autocomplete service for address input in checkout
+            - Autocomplete service for address input in the customer account
+            - available for Shopware 6 input fields Address, City and Zip/Postal code
+            - 'Completion of postal data: delivery-relevant streets'
+            - The cursor remains in the address field to be ready for the additional input for house number after initial AUTOCOMPLETE selection
+            - Simple API configuration via user credentials
+            - Optional logging configuration in case of troubleshooting
+    faq:
+        de:
+            - question: Wo finde ich die Dokumentation zum Plugin?
+              answer: Die Dokumentation zur Konfiguration und Nutzung des Plugins finden Sie auf <a href="https://postdirekt.support.netresearch.de/support/solutions/articles/12000053438" target="_blank">dieser Seite</a>.
+            - question: Welche Zugangsdaten benötigt das Plugin?
+              answer: Das Plugin kommuniziert mit dem Service <a href="https://www.deutschepost.de/de/d/deutsche-post-direkt/datafactory.html" target="_blank">Datafactory Autocomplete</a>. Die dafür nötigen Zugangsdaten erhalten Sie von Deutsche Post Direkt. Hier können Sie <a href="http://www.postdirekt.de/kontakt" target="_blank">Kontakt aufnehmen</a>.
+            - question: Gibt es eine ausführliche FAQ/Wissensdatenbank?
+              answer: 'Eine Wissensdatenbank mit weiteren Informationen und Tipps zur Fehlerbehebung finden Sie hier: <a href="https://postdirekt.support.netresearch.de/" target="_blank">postdirekt.support.netresearch.de</a>'
+        en: []
+    images:
+        - file: src/Resources/store/img-0.png
+          activate:
+            de: true
+            en: true
+          preview:
+            de: true
+            en: true
+          priority: 0
+        - file: src/Resources/store/img-1.png
+          activate:
+            de: true
+            en: true
+          preview:
+            de: false
+            en: false
+          priority: 0
+        - file: src/Resources/store/img-2.png
+          activate:
+            de: true
+            en: true
+          preview:
+            de: false
+            en: false
+          priority: 0
+        - file: src/Resources/store/img-3.png
+          activate:
+            de: true
+            en: true
+          preview:
+            de: false
+            en: false
+          priority: 0
+        - file: src/Resources/store/img-4.png
+          activate:
+            de: true
+            en: true
+          preview:
+            de: false
+            en: false
+          priority: 0
+build:
+    extraBundles: []
+    zip:
+        composer:
+            enabled: false
+            before_hooks: []
+            after_hooks: []
+            excluded_packages: []
+        assets:
+            enabled: true
+            before_hooks: []
+            after_hooks: []
+            enable_es_build_for_admin: true
+            enable_es_build_for_storefront: true
+        pack:
+            excludes:
+                paths:
+                  - build/
+                  - reports/
+                  - .gitlab-ci.yml
+                  - .git
+                  - .gitignore
+                  - .gitattributes
+            before_hooks: []
