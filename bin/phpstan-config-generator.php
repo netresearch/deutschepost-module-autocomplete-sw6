@@ -1,22 +1,29 @@
+#!/usr/bin/env php
 <?php declare(strict_types=1);
 
-use Composer\InstalledVersions;
+use PostDirekt\Autocomplete\NRLEJPostDirektAutocomplete;
+use Shopware\Core\DevOps\StaticAnalyze\StaticAnalyzeKernel;
 use Shopware\Core\Framework\Plugin\KernelPluginLoader\StaticKernelPluginLoader;
-use Shopware\Development\Kernel;
 use Symfony\Component\Dotenv\Dotenv;
 
-$classLoader = require __DIR__ . '/../../../../vendor/autoload.php';
-(new Dotenv(true))->load(__DIR__ . '/../../../../.env');
+$projectRoot = getenv('SHOPWARE_BUILD_DIR') ?: dirname(__DIR__, 4);
+$pluginRootPath = dirname(__DIR__);
+$classLoader = require $projectRoot . '/vendor/autoload.php';
+if (file_exists($projectRoot . '/.env')) {
+    (new Dotenv())->usePutEnv()->load($projectRoot . '/.env');
+}
 
-$shopwareVersion = InstalledVersions::getVersion('shopware/platform');
-
-$pluginRootPath = \dirname(__DIR__);
-$composerJson = json_decode((string) file_get_contents($pluginRootPath . '/composer.json'), true);
+$composerJson = json_decode(
+    (string) file_get_contents($pluginRootPath . '/composer.json'),
+    true,
+    512,
+    \JSON_THROW_ON_ERROR
+);
 
 $nrlejAutocomplete = [
     'autoload' => $composerJson['autoload'],
-    'baseClass' => \PostDirekt\Autocomplete\NRLEJPostDirektAutocomplete::class,
-    'managedByComposer' => false,
+    'baseClass' => NRLEJPostDirektAutocomplete::class,
+    'managedByComposer' => true,
     'name' => 'NRLEJPostDirektAutocomplete',
     'version' => $composerJson['version'],
     'active' => true,
@@ -24,14 +31,12 @@ $nrlejAutocomplete = [
 ];
 $pluginLoader = new StaticKernelPluginLoader($classLoader, null, [$nrlejAutocomplete]);
 
-$kernel = new Kernel('dev', true, $pluginLoader, $shopwareVersion);
+$kernel = new StaticAnalyzeKernel('dev', true, $pluginLoader, 'phpstan-test-cache-id');
 $kernel->boot();
 $projectDir = $kernel->getProjectDir();
 $cacheDir = $kernel->getCacheDir();
 
-$relativeCacheDir = str_replace($projectDir, '', $cacheDir);
-
-$phpStanConfigDist = file_get_contents(__DIR__ . '/../phpstan.neon.dist');
+$phpStanConfigDist = file_get_contents($pluginRootPath . '/phpstan.neon.dist');
 if ($phpStanConfigDist === false) {
     throw new RuntimeException('phpstan.neon.dist file not found');
 }
@@ -39,12 +44,16 @@ if ($phpStanConfigDist === false) {
 // because the cache dir is hashed by Shopware, we need to set the PHPStan config dynamically
 $phpStanConfig = str_replace(
     [
-        "\n        # the placeholder \"%ShopwareHashedCacheDir%\" will be replaced on execution by bin/phpstan-config-generator.php script",
         '%ShopwareHashedCacheDir%',
+        '%ShopwareRoot%',
+        '%ShopwareKernelClass%',
+        '%phpversion%',
     ],
     [
-        '',
-        $relativeCacheDir,
+        $kernel->getCacheDir(),
+        $kernel->getProjectDir(),
+        str_replace('\\', '_', get_class($kernel)),
+        !\interface_exists(EntityRepositoryInterface::class) ? '80100' : '70400',
     ],
     $phpStanConfigDist
 );

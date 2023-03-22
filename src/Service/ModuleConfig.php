@@ -14,18 +14,12 @@ class ModuleConfig
 {
     private const PREFIX = 'NRLEJPostDirektAutocomplete.config.';
 
-    /**
-     * @var SystemConfigService
-     */
-    private $systemConfig;
-
-    public function __construct(SystemConfigService $systemConfig)
+    public function __construct(private readonly SystemConfigService $systemConfig)
     {
-        $this->systemConfig = $systemConfig;
     }
 
     /**
-     * Check wether module functionality is activated
+     * Check if module functionality is activated
      */
     public function isActive(?string $salesChannelId = null): bool
     {

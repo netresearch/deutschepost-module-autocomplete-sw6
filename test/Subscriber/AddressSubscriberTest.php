@@ -49,7 +49,6 @@ class AddressSubscriberTest extends TestCase
             ->disableOriginalConstructor()
             ->onlyMethods(['fetchToken'])
             ->getMock();
-        parent::setUp();
     }
 
     public function testLoginPageWithToken(): void
