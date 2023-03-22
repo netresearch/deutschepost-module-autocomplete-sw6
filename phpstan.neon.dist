@@ -1,8 +1,23 @@
+#include:
+#    - %ShopwareRoot%/vendor/phpstan/phpstan/conf/bleedingEdge.neon
 parameters:
+    phpVersion: %phpversion%
     level: 8
+    tmpDir: var/cache/phpstan
     inferPrivatePropertyTypeFromConstructor: true
     checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    reportUnmatchedIgnoredErrors: false
+
+    paths:
+        -   src
+        -   tests
+
     symfony:
         constant_hassers: false
         # the placeholder "%ShopwareHashedCacheDir%" will be replaced on execution by bin/phpstan-config-generator.php script
-        container_xml_path: '%rootDir%/../../../../..%ShopwareHashedCacheDir%/Shopware_Development_KernelDevDebugContainer.xml'
+        container_xml_path: '%ShopwareHashedCacheDir%/%ShopwareKernelClass%DevDebugContainer.xml'
+    ignoreErrors:
+        -
+            message: '#Service "Shopware\\Storefront\\Page\\Account\\Login\\AccountLoginPageLoader" is private.#'
+            path: test/Subscriber/AddressSubscriberTest.php

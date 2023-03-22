@@ -15,10 +15,7 @@ use Shopware\Core\System\SystemConfig\SystemConfigService;
 
 class ModuleConfigTest extends TestCase
 {
-    /**
-     * @var ModuleConfig
-     */
-    private $subject;
+    private ModuleConfig $subject;
 
     protected function setUp(): void
     {
@@ -30,7 +27,6 @@ class ModuleConfigTest extends TestCase
         $systemConfigMock->method('get')
                          ->willReturnArgument(0);
         $this->subject = new ModuleConfig($systemConfigMock);
-        parent::setUp();
     }
 
     public function testIsActive(): void
