@@ -1,14 +1,15 @@
 {
     "require": {
-        "psalm/phar": "^4.18",
-        "phpstan/phpstan": "^1.4"
+        "phpstan/phpstan": "^1.4",
+        "rector/rector": "*",
+        "frosh/shopware-rector": "*"
     },
     "config": {
         "allow-plugins": {
             "composer/package-versions-deprecated": true
         },
         "platform": {
-            "php": "7.4"
+            "php": "8.1"
         }
     }
 }

@@ -6,3 +6,4 @@ src/Resources/public
 phpstan.neon
 ./idea
 composer.lock
+var/

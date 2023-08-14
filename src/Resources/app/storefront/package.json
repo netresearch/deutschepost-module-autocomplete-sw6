@@ -9,6 +9,6 @@
     "license": "ISC",
     "dependencies": {
         "@netresearch/postdirekt-autocomplete-library": "^1.2.2",
-        "shopware-storefront-sdk": "*"
+        "shopware-storefront-sdk": "^0.0.2"
     }
 }
