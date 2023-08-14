@@ -22,7 +22,7 @@ store:
             <p>Die Vorschläge basieren auf den Original Postleitdaten der Deutschen Post.
             Durch die Schnittstelle und Verschlüsselung, haben Sie immer Zugang zu den aktuellsten Daten – schnell und sicher.</p>
             <h2>Konto &amp; Preisgestaltung</h2>
-            <p>Ein zusätzliches Benutzerkonto ist erforderlich und es fallen zusätzliche Gebühren an.
+            <p>Ein zusätzliches Benutzerkonto ist erforderlich und es fallen Gebühren an.
             Das Benutzerkonto wird nicht während der Plugin-Installation erstellt.
             Wenn Sie noch kein Benutzerkonto haben, besuchen Sie bitte die <a rel="noopener noreferrer" target="_blank" href="https://www.postdirekt.de/autocomplete">Anmeldeseite: www.postdirekt.de/autocomplete</a> und registrieren Sie sich im Portal der Deutschen Post Direkt.
             Für weitere Informationen zu Preispaketen besuchen Sie bitte auch die <a rel="noopener noreferrer" target="_blank" href="https://www.postdirekt.de/autocomplete">Anmeldeseite: www.postdirekt.de/autocomplete</a>.
@@ -153,6 +153,7 @@ build:
             excludes:
                 paths:
                   - build/
+                  - vendor-bin/
                   - reports/
                   - .gitlab-ci.yml
                   - .git

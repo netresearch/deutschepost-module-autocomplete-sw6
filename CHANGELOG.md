@@ -1,3 +1,7 @@
+# 1.4.0
+
+- provide compatibility with Shopware 6.5
+
 # 1.3.4
 
 - fix autocomplete functionality for editing and creating address on checkout confirmation step
