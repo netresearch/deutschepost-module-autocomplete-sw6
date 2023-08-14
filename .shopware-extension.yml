@@ -8,7 +8,6 @@ store:
         - en_GB
     categories:
         - Bestellprozess
-        - ConversionOptimierung
     type: extension
     icon: src/Resources/store/icon.png
     automatic_bugfix_version_compatibility: true
@@ -22,7 +21,7 @@ store:
             <p>Die Vorschläge basieren auf den Original Postleitdaten der Deutschen Post.
             Durch die Schnittstelle und Verschlüsselung, haben Sie immer Zugang zu den aktuellsten Daten – schnell und sicher.</p>
             <h2>Konto &amp; Preisgestaltung</h2>
-            <p>Ein zusätzliches Benutzerkonto ist erforderlich und es fallen Gebühren an.
+            <p>Ein zusätzliches Benutzerkonto ist erforderlich und es fallen zusätzliche Gebühren an.
             Das Benutzerkonto wird nicht während der Plugin-Installation erstellt.
             Wenn Sie noch kein Benutzerkonto haben, besuchen Sie bitte die <a rel="noopener noreferrer" target="_blank" href="https://www.postdirekt.de/autocomplete">Anmeldeseite: www.postdirekt.de/autocomplete</a> und registrieren Sie sich im Portal der Deutschen Post Direkt.
             Für weitere Informationen zu Preispaketen besuchen Sie bitte auch die <a rel="noopener noreferrer" target="_blank" href="https://www.postdirekt.de/autocomplete">Anmeldeseite: www.postdirekt.de/autocomplete</a>.
@@ -33,7 +32,7 @@ store:
             The service offers effective assistance with incomplete address data.</p>
             <p>This module integrates DATAFACTORY Autocomplete services into Shopware 6 so that your customers can now supplement their postal data easily.
             As soon as your customers enter the first alphanumerical characters in an address input field, they will receive up to 15 suggestions for valid German addresses.
-            A total of around 1.2 million different address suggestions are available, including all delivery-relevant streets, more than 16,000 postal--config $CI_PROJECT_DIR/.shopware-extension.ymlcodes and destinations, 14,000 towns/cities, 75,000 district names.
+            A total of around 1.2 million different address suggestions are available, including all delivery-relevant streets, more than 16,000 postal codes and destinations, 14,000 towns/cities, 75,000 district names.
             The basis for automatic completion is the street directory based on the original postal routing data of the Deutsche Post.
             Through interface connection and encryption, you can always access up-to-date postal data quickly and securely.</p>
             <h2>Account &amp; Pricing</h2>
@@ -137,6 +136,7 @@ store:
           priority: 0
 build:
     extraBundles: []
+    shopwareVersionConstraint: ""
     zip:
         composer:
             enabled: false
@@ -144,19 +144,19 @@ build:
             after_hooks: []
             excluded_packages: []
         assets:
-            enabled: true
+            enabled: false
             before_hooks: []
             after_hooks: []
-            enable_es_build_for_admin: true
-            enable_es_build_for_storefront: true
+            enable_es_build_for_admin: false
+            enable_es_build_for_storefront: false
         pack:
             excludes:
-                paths:
-                  - build/
-                  - vendor-bin/
-                  - reports/
-                  - .gitlab-ci.yml
-                  - .git
-                  - .gitignore
-                  - .gitattributes
+                paths: []
             before_hooks: []
+changelog:
+    enabled: false
+    pattern: ""
+    template: ""
+    variables: {}
+    ai_enabled: false
+    vcsurl: ""
