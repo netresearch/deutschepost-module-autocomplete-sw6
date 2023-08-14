@@ -29,15 +29,9 @@ class AddressSubscriberTest extends TestCase
     use IntegrationTestBehaviour;
     use StorefrontPageTestBehaviour;
 
-    /**
-     * @var MockObject|ModuleConfig
-     */
-    private $moduleConfig;
+    private MockObject&ModuleConfig $moduleConfig;
 
-    /**
-     * @var MockObject|AuthenticationService
-     */
-    private $authService;
+    private MockObject&AuthenticationService $authService;
 
     protected function setUp(): void
     {
@@ -79,7 +73,7 @@ class AddressSubscriberTest extends TestCase
         static::assertEquals($accessToken, $extension->get(AddressSubscriber::TOKEN_KEY));
     }
 
-    protected function getPageLoader(): ?object
+    protected function getPageLoader(): ?AccountLoginPageLoader
     {
         /* @var AccountLoginPageLoader $accountLoginPageLoader */
         return $this->getContainer()->get(AccountLoginPageLoader::class);
