@@ -47,13 +47,11 @@ $phpStanConfig = str_replace(
         '%ShopwareHashedCacheDir%',
         '%ShopwareRoot%',
         '%ShopwareKernelClass%',
-        '%phpversion%',
     ],
     [
         $kernel->getCacheDir(),
         $kernel->getProjectDir(),
         str_replace('\\', '_', get_class($kernel)),
-        !\interface_exists(EntityRepositoryInterface::class) ? '80100' : '70400',
     ],
     $phpStanConfigDist
 );

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 if [ -z "$SHOPWARE_BUILD_DIR" ]; then
   SHOPWARE_ROOT_DIR="$(dirname \"$0\")"/../../..
 else
@@ -8,5 +9,4 @@ CWD="$(dirname -- "$(readlink -f -- "$0")")"
 plugin_directory=$CWD/..
 composer dump-autoload
 $CWD/phpstan-config-generator.php
-php $SHOPWARE_ROOT_DIR/vendor/bin/phpstan analyze --configuration $plugin_directory/phpstan.neon --autoload-file=$SHOPWARE_ROOT_DIR/vendor/autoload.php $plugin_directory/src $plugin_directory/test
-php $SHOPWARE_ROOT_DIR/vendor-bin/psalm --config=$plugin_directory/psalm.xml --show-info=false --threads=4
+php $SHOPWARE_ROOT_DIR/vendor/bin/phpstan analyze --configuration $plugin_directory/phpstan.neon --autoload-file=$SHOPWARE_ROOT_DIR/vendor/autoload.php

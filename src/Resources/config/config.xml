@@ -7,7 +7,7 @@
         <component name="infobox">
             <name>infobox</name>
             <logo>nrlejpostdirektautocomplete/static/assets/images/deutsche-post-logo.svg</logo>
-            <version>1.3.4</version>
+            <version>1.4.0</version>
             <headerColor>#FFD633</headerColor>
             <bodyColor>#FEFCEE</bodyColor>
         </component>
