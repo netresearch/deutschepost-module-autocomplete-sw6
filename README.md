@@ -11,19 +11,20 @@ This extension adds autocompletion functionality for customer addresses to your 
 
 ## Installation
 
-### From [Community Store](https://store.shopware.com/) (recommended)
+### From [Community Store](https://store.shopware.com/)
 
 You have bought the plugin in the Shopware community store. You manage your plugins from within your shop.
 
-Please follow the corresponding [documentation](https://docs.shopware.com/en/shopware-6-en/settings/plugins#install-plug-ins).
+Please follow the
+corresponding [documentation](https://docs.shopware.com/en/shopware-6-en/extensions/myextensions#installing-extensions).
 
-### From [FriendsOfShopware Packages](https://packages.friendsofshopware.com/)
+### From [Community Store via Composer](https://store.shopware.com/) (recommended)
 
-You have bought the plugin in the Shopware community store and want to manage your shop's plugins and dependencies with composer.
+You have bought the plugin in the Shopware community store and want to manage your shop's plugins and dependencies with
+composer.
 
-[packages.friendsofshopware.com](https://packages.friendsofshopware.com/) will act as man-in-the-middle for fetching plugins from the [community store](https://store.shopware.com/) via composer. The plugins have all their dependencies and their compiled sources packaged with them.
-
-Assuming you have followed the setup steps from [packages.friendsofshopware.com](https://packages.friendsofshopware.com/), proceed with the following:
+Follow the [Shopware Instruction Video](https://www.youtube.com/watch?v=OcaTiOhum2k) to set up your shop for using
+composer.
 
 ```shell script
 composer require store.shopware.com/nrlejpostdirektautocomplete
@@ -36,7 +37,8 @@ bin/console plugin:install --activate --clearCache NRLEJPostDirektAutocomplete
 
 You are fine with having to install dependencies of the plugin yourself.
 
-Run the following commands from your shop's root directory:
+Assuming, you are using the [Flex-Template](https://developer.shopware.com/docs/guides/installation/template), run the
+following commands from your shop's root directory:
 
 ```shell script
 composer require netresearch/postdirekt-autocomplete
@@ -44,16 +46,13 @@ composer require netresearch/postdirekt-autocomplete
 composer dump
 bin/console plugin:refresh
 bin/console plugin:install --activate --clearCache NRLEJPostDirektAutocomplete
-bin/console bundle:dump
-npm --prefix vendor/shopware/platform/src/Storefront/Resources/app/storefront/ run production
-npm --prefix vendor/shopware/platform/src/Administration/Resources/app/administration/ run build
-bin/console assets:install
-bin/console theme:compile
+bin/build-js.sh
 ```
 
 ### From [GitHub](https://github.com/netresearch/deutschepost-module-autocomplete-sw6)
 
-You are fine with having to install dependencies of the plugin yourself. You want to extend or adapt the extension to your own needs.
+You are fine with having to install dependencies of the plugin yourself. You want to extend or adapt the extension to
+your own needs.
 
 Run the following command from your shop's root directory:
 
@@ -70,7 +69,7 @@ Then, continue as described in [From Packagist](#from-packagist).
 * Check **"Active"**
 * Enter your credentials in the **"API User"** and **"API Password"** fields
 * Check **"Active"** in "House number hint" if the hint should be active
-* Navigate to `Administration > Settings > Snippets` to maintain **postdirekt.autocomplete.housenumber_hint** snippet 
+* Navigate to `Administration > Settings > Snippets` to maintain **postdirekt.autocomplete.housenumber_hint** snippets
 
 ## Author
 
