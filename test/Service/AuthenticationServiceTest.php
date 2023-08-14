@@ -27,25 +27,13 @@ use Shopware\Core\Test\TestDefaults;
  */
 class AuthenticationServiceTest extends TestCase
 {
-    /**
-     * @var ModuleConfig|MockObject
-     */
-    private $config;
+    private ModuleConfig&MockObject $config;
 
-    /**
-     * @var ServiceFactoryInterface|MockObject
-     */
-    private $service;
+    private ServiceFactoryInterface&MockObject $service;
 
-    /**
-     * @var AuthenticationServiceInterface|MockObject
-     */
-    private $authenticationService;
+    private AuthenticationServiceInterface&MockObject $authenticationService;
 
-    /**
-     * @var TestLogger
-     */
-    private $logger;
+    private TestLogger $logger;
 
     protected function setUp(): void
     {
