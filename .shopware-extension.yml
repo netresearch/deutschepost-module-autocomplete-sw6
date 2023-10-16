@@ -144,11 +144,11 @@ build:
             after_hooks: []
             excluded_packages: []
         assets:
-            enabled: false
+            enabled: true
             before_hooks: []
             after_hooks: []
-            enable_es_build_for_admin: false
-            enable_es_build_for_storefront: false
+            enable_es_build_for_admin: true
+            enable_es_build_for_storefront: true
         pack:
             excludes:
                 paths: []
