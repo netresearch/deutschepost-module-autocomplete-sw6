@@ -25,8 +25,8 @@
     },
     "require": {
         "php": "^8.1",
-        "shopware/storefront": "~6.5.0",
-        "shopware/core": "~6.5.0",
+        "shopware/storefront": "~6.6.0",
+        "shopware/core": "~6.6.0",
         "deutschepost/sdk-api-autocomplete-authentication": "^1.2.0",
         "php-http/curl-client": "^2.2.0",
         "slim/psr7": "^1.4.0"
