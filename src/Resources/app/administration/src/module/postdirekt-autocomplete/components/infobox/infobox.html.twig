@@ -1,7 +1,7 @@
 {% block nr_autocomplete_infobox %}
 <div class="nr-infobox">
     <div class="header" :style="'background-color:' + headerColor">
-        <img height="40px" alt="Logo" class="logo" :src="logo | asset"/>
+        <img height="40px" alt="Logo" class="logo" :src="logo"/>
         <div class="version">{{ version }}</div>
     </div>
     <div class="body" :style="'background-color:' + bodyColor" v-html="$tc('postdirekt-autocomplete.infobox.bodyHtml')"></div>
