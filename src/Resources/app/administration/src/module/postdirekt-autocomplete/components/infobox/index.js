@@ -22,4 +22,9 @@ Shopware.Component.register('infobox', {
             required: true,
         },
     },
+    methods: {
+        getLogoPath() {
+            return "bundles/nrlejpostdirektaddressfactory/static/assets/images/addressfactory-logo.png";
+        },
+    }
 });
