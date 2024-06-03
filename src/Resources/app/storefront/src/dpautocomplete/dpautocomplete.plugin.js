@@ -27,10 +27,7 @@ export default class DPAutocompletePlugin extends Plugin {
             + this.options.countryFieldSelector
             + ""
         );
-        // prevent registering the autocomplete functionality multiple times on the same form fields
-        if (listenerMap[hash] !== undefined) {
-            return;
-        }
+
         const streetInput = document.querySelector(this.options.streetFieldSelector);
         const cityInput = document.querySelector(this.options.cityFieldSelector);
         const postalCodeInput = document.querySelector(this.options.postalCodeFieldSelector);
@@ -46,5 +43,4 @@ export default class DPAutocompletePlugin extends Plugin {
         );
         listenerMap[hash] = hash;
     }
-
 }
