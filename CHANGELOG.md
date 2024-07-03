@@ -1,3 +1,8 @@
+# 1.5.0
+
+- add compatibility mit Shopware 6.6.x
+- removed compatibility with Shopware 6.5.x 
+
 # 1.4.1
 
 - fix distributed JS files to be loaded properly
