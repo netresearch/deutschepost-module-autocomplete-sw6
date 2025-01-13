@@ -2,7 +2,7 @@
     "name": "netresearch/postdirekt-autocomplete",
     "description": "Deutsche Post Direkt Autocomplete Integration for Shopware6",
     "type": "shopware-platform-plugin",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "license": "MIT",
     "config": {
         "platform": {
