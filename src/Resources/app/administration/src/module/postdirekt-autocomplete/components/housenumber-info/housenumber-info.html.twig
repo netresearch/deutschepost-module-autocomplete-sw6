@@ -1,6 +1,9 @@
 {% block nr_autocomplete_housenumberinfo %}
     <div class="nr-infobox">
-        <div class="body" :style="'background-color:' + bodyColor" v-html="$tc('postdirekt-autocomplete.housenumber_info.bodyHtml')">
-        </div>
+        <div
+            class="body"
+            :style="'background-color:' + bodyColor"
+            v-html="$t('postdirekt-autocomplete.housenumber_info.bodyHtml')"
+        ></div>
     </div>
 {% endblock %}
