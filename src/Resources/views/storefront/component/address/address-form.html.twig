@@ -3,7 +3,7 @@
 {% block component_address_form_address_fields %}
     {{ parent() }}
     {% if page.extensions('postdirekt_autocomplete') %}
-        {% set hint = page.extensions.postdirekt_autocomplete.get('hint') ? 'postdirekt.autocomplete.housenumber_hint'|trans : null %}
+        {% set hint = page.extensions.postdirekt_autocomplete.get('hint') ? 'postdirekt.autocomplete.housenumber_hint'|trans : '' %}
         {% set deCountryId = '' %}
         {% for country in page.countries.elements %}
             {% if country.iso is same as('DE') %}
