@@ -5,7 +5,7 @@ This extension adds autocompletion functionality for customer addresses to your 
 
 ## Requirements
 
-* Shopware 6.6.0 or newer
+* Shopware 6.7.0 or newer
 * PHP >= 8.2
 * Contract with Deutsche Post Direkt GmbH for using the Autocomplete 2.0 API
 
