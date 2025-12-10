@@ -42,5 +42,10 @@ export default class DPAutocompletePlugin extends Plugin {
             this.options.hint
         );
         listenerMap[hash] = hash;
+        [streetInput, cityInput, postalCodeInput, countryInput].forEach((input) => {
+            input.addEventListener('change', () => {
+                window.formValidation.validateForm(input.form, [input]);
+            });
+        })
     }
 }
