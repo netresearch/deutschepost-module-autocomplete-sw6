@@ -1,6 +1,5 @@
-// eslint-disable-next-line func-names
 const {resolve, join} = require("path");
-module.exports = function (params) {
+module.exports = function () {
     return {
         resolve: {
             alias: {
