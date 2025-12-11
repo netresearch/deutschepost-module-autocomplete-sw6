@@ -2,7 +2,7 @@
     "name": "netresearch/postdirekt-autocomplete",
     "description": "Deutsche Post Direkt Autocomplete Integration for Shopware6",
     "type": "shopware-platform-plugin",
-    "version": "1.7.0",
+    "version": "1.8.0",
     "license": "MIT",
     "config": {
         "platform": {
@@ -25,8 +25,8 @@
     },
     "require": {
         "php": "^8.2",
-        "shopware/storefront": "~6.7.0",
-        "shopware/core": "~6.7.0",
+        "shopware/storefront": "~6.7.3",
+        "shopware/core": "~6.7.3",
         "deutschepost/sdk-api-autocomplete-authentication": "^1.2.0",
         "php-http/curl-client": "^2.2.0",
         "slim/psr7": "^1.4.0"
