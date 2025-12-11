@@ -1,3 +1,7 @@
+# 1.8.0
+
+- add compatibility mit Shopware 6.7.3
+
 # 1.7.0
 
 - add compatibility mit Shopware 6.7.0
