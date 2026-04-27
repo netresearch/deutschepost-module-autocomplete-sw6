@@ -11,9 +11,28 @@ Shopware.Component.register('postdirekt.autocomplete.api-test-button', {
         Mixin.getByName('notification'),
     ],
     methods: {
+        getSystemConfig() {
+            let p = this.$parent;
+            while (p) {
+                if (p.$options?.name === 'sw-system-config') {
+                    return p;
+                }
+                p = p.$parent;
+            }
+            return null;
+        },
+        getConfigValue(configData, key) {
+            return (configData[null] && configData[null][key]) || configData[key];
+        },
         onButtonClick() {
-            const username = document.querySelector("[id='NRLEJPostDirektAutocomplete.config.apiUser']").value
-            const password = document.querySelector("[id='NRLEJPostDirektAutocomplete.config.apiPassword']").value
+            const sysConfig = this.getSystemConfig();
+            if (!sysConfig) {
+                console.error('Failed retrieving config field values. Make sure the button\'s nested inside a sw-system-config component.');
+                return;
+            }
+            
+            const username = this.getConfigValue(sysConfig.actualConfigData, 'NRLEJPostDirektAutocomplete.config.apiUser');
+            const password = this.getConfigValue(sysConfig.actualConfigData, 'NRLEJPostDirektAutocomplete.config.apiPassword');
             const headers = new Headers();
             headers.append('Authorization', 'Basic ' + btoa(username + ":" + password));
 
