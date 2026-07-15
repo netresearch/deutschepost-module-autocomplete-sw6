@@ -1,5 +1,13 @@
 # NRLEJPostDirektAutocomplete - Shopware 6 Integration for Deutsche Post Direkt DATAFACTORY Autocomplete 2.0
 
+## Deprecation Notice
+
+In agreement with Deutsche Post Direkt GmbH, the **ADDRESSFACTORY** and **AUTOCOMPLETE** modules have been discontinued and are entering end-of-life.
+
+* No new customers will be onboarded for these modules by Deutsche Post Direkt.
+* Existing customers may continue to access the GitHub source code until approximately **June 2027**.
+* Official support for existing users will end on **December 31, 2026**.
+
 This extension adds autocompletion functionality for customer addresses to your shop frontend
 (checkout and customer account) using the Deutsche Post Direkt Autocomplete API 2.0.
 
